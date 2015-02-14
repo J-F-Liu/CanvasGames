@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Painter</title>
+    <link rel="stylesheet" href="app.css" type="text/css" />
+    <script src="../LAB.min.js"></script>
+    <script>
+        $LAB
+            .script("../GameEngine/System/Color.js").wait()
+            .script("../GameEngine/System/Keys.js").wait()
+            .script("../GameEngine/Geometry/Vector2.js").wait()
+            .script("../GameEngine/Geometry/Rectangle.js").wait()
+            .script("../GameEngine/Geometry/Circle.js").wait()
+            .script("../GameEngine/Input/ButtonState.js").wait()
+            .script("../GameEngine/Input/Mouse.js").wait()
+            .script("../GameEngine/Input/Keyboard.js").wait()
+            .script("../GameEngine/GameObject.js").wait()
+            .script("../GameEngine/Sprite.js").wait()
+            .script("../GameEngine/Scene.js").wait()
+            .script("../GameEngine/Canvas2D.js").wait()
+            .script("../GameEngine/Sound.js").wait()
+            .script("../GameEngine/UI/Label.js").wait()
+            .script("../GameEngine/Physics.js").wait()
+            .script("../GameEngine/Game.js").wait()
+            .script("Cannon.js").wait()
+            .script("Ball.js").wait()
+            .script("PaintCan.js").wait()
+            .script("Lives.js").wait()
+            .script("Score.js").wait()
+            .script("GameWorld.js").wait(function () {
+                GameWorld.run();
+            });
+    </script>
+</head>
+<body>
+</body>
+</html>
