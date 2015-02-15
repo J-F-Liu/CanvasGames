@@ -33,11 +33,11 @@
             if (this.visible) {
                 this.velocity.add(Physics.gravity(500, frameSpan));
                 this.velocity.add(Physics.resistance(0.001, this.velocity, frameSpan));
+                super.update(frameSpan);
             }
             if (this.isOutside(Game.viewport)) {
                 this.reset();
             }
-            super.update(frameSpan);
         }
     }
 

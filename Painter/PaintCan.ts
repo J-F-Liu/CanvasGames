@@ -33,15 +33,19 @@
                 this.color = GameWorld.ball.color;
                 if (this.color == this.targetColor) {
                     GameWorld.score += 10;
+                    GameWorld.plusTen.emit();
                     Sound.Play(Game.audios['collect_points']);
                 } else {
                     GameWorld.score -= 10;
+                    GameWorld.minusTen.emit();
+                    Sound.Play(Game.audios['lose_points']);
                 }
                 GameWorld.ball.reset();
             }
             if (this.position.y > Game.viewport.height) {
                 if (this.color != this.targetColor) {
                     GameWorld.lives -= 1;
+                    Sound.Play(Game.audios['bubble_burst']);
                 }
                 this.restart();
             }

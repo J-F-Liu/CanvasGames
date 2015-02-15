@@ -6,6 +6,8 @@ class GameWorld {
     static lives: number = 5;
     static cannon: Cannon;
     static ball: Ball;
+    static plusTen: Particle;
+    static minusTen: Particle;
 
     static run() {
         Game.init(800, 480);
@@ -14,10 +16,10 @@ class GameWorld {
             "background.jpg", "scorebar.jpg",
             "cannon_barrel.png", "cannon_red.png", "cannon_green.png", "cannon_blue.png",
             "ball_red.png", "ball_green.png", "ball_blue.png",
-            "can_red.png", "can_green.png", "can_blue.png",
+            "can_red.png", "can_green.png", "can_blue.png", "plus_ten.png", "minus_ten.png",
             "lives.png", "gameover_click.png");
 
-        Game.loadAudios("audio/", "collect_points", "music", "shoot_paint");
+        Game.loadAudios("audio/", "music", "collect_points", "lose_points", "shoot_paint", "bubble_burst");
 
         Game.start(function () {
             var background = new StaticImage(Game.images['background']);
@@ -30,9 +32,19 @@ class GameWorld {
             var ball = new Ball();
             var lives = new Lives(live, gameover);
             var score = new Score(Game.images['scorebar']);
+            var plusTen = new Particle(Game.images['plus_ten'], 1, function () {
+                plusTen.position.set(ball.right, ball.top);
+                plusTen.velocity.set(54, -60);
+            });
+            var minusTen = new Particle(Game.images['minus_ten'], 1, function () {
+                minusTen.position.set(ball.right, ball.top);
+                minusTen.velocity.set(48, 70);
+            });
 
             GameWorld.cannon = cannon;
             GameWorld.ball = ball;
+            GameWorld.plusTen = plusTen;
+            GameWorld.minusTen = minusTen;
 
             var fpsLabel = new Label("FPS", Color.black);
             fpsLabel.update = function (frameSpan) {
@@ -42,6 +54,7 @@ class GameWorld {
             var playing = new Scene(
                 background,
                 can1, can2, can3, ball, cannon,
+                plusTen, minusTen,
                 lives, score
                 );
             playing.onStart = function () {

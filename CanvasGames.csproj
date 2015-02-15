@@ -32,6 +32,7 @@
     <TypeScriptCompile Include="GameEngine\Input\ButtonState.ts" />
     <TypeScriptCompile Include="GameEngine\Input\Keyboard.ts" />
     <TypeScriptCompile Include="GameEngine\Input\Mouse.ts" />
+    <TypeScriptCompile Include="GameEngine\Particle.ts" />
     <TypeScriptCompile Include="GameEngine\Physics.ts" />
     <TypeScriptCompile Include="GameEngine\Scene.ts" />
     <TypeScriptCompile Include="GameEngine\Sound.ts" />
