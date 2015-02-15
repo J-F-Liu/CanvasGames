@@ -84,7 +84,7 @@
         Game.prevTimestamp = timestamp;
 
         Game.scenes.currentScene.update(frameSpan);
-        Game.scenes.currentScene.render(Game.renderer);
+        Game.scenes.currentScene.draw(Game.renderer);
 
         Mouse.reset();
         Keyboard.reset();

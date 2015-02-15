@@ -1,8 +1,9 @@
-﻿class Scene {
+﻿class Scene extends GameObject{
     id: number;
     objects: GameObject[];
 
     constructor(...objects: GameObject[]) {
+        super();
         this.objects = objects;
     }
 
@@ -12,12 +13,12 @@
         });
     }
 
-    render(renderer: Renderer) {
-        this.objects.forEach((obj) => {
-            if (obj.visible) {
+    draw(renderer: Renderer) {
+        if (this.visible) {
+            this.objects.forEach((obj) => {
                 obj.draw(renderer);
-            }
-        });
+            });
+        }
     }
 
     onStart: () => void;

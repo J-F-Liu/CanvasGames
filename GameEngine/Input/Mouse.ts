@@ -50,4 +50,12 @@
         Mouse.middle.reset();
         Mouse.right.reset();
     }
+
+    static pressed(region: Shape): boolean {
+        return Mouse.left.pressed && region.contains(Mouse.position);
+    }
+
+    static hover(region: Shape): boolean {
+        return region.contains(Mouse.position);
+    }
 } 

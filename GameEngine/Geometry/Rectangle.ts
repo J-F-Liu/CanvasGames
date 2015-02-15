@@ -1,4 +1,5 @@
 ﻿interface Shape {
+    contains(point: Vector2): boolean;
     hasIntersect(shape: Shape): boolean;
 }
 

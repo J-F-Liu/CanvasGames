@@ -29,18 +29,18 @@
 
     update(frameSpan: number) {
         if (GameWorld.lives > 0) {
-            if (this.collideWith(GameWorld.ball)) {
-                this.color = GameWorld.ball.color;
+            if (this.collideWith(GameWorld.sprites.ball)) {
+                this.color = GameWorld.sprites.ball.color;
                 if (this.color == this.targetColor) {
                     GameWorld.score += 10;
-                    GameWorld.plusTen.emit();
+                    GameWorld.sprites.plusTen.emit();
                     Sound.Play(Game.audios['collect_points']);
                 } else {
                     GameWorld.score -= 10;
-                    GameWorld.minusTen.emit();
+                    GameWorld.sprites.minusTen.emit();
                     Sound.Play(Game.audios['lose_points']);
                 }
-                GameWorld.ball.reset();
+                GameWorld.sprites.ball.reset();
             }
             if (this.position.y > Game.viewport.height) {
                 if (this.color != this.targetColor) {

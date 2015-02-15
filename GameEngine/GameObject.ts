@@ -56,9 +56,15 @@ class StaticImage extends GameObject {
         return this.position.y + this.height;
     }
 
+    get bound(): Shape {
+        return new Rectangle(this.position.x, this.position.y, this.imageRect.width, this.imageRect.height);
+    }
+
     draw(renderer: Renderer) {
-        renderer.drawImage(
-            this.image, this.position, this.rotation, this.scale, this.origin, this.imageRect, this.mirror);
+        if (this.visible) {
+            renderer.drawImage(
+                this.image, this.position, this.rotation, this.scale, this.origin, this.imageRect, this.mirror);
+        }
     }
 }
 

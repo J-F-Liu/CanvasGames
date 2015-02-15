@@ -5,10 +5,6 @@
         super(image);
     }
 
-    get bound(): Shape {
-        return new Rectangle(this.position.x, this.position.y, this.imageRect.width, this.imageRect.height);
-    }
-
     update(frameSpan: number) {
         var displacement = Vector2.times(frameSpan, this.velocity);
         this.position.add(displacement);

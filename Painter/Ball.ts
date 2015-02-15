@@ -15,9 +15,9 @@
 
     shoot(target: Vector2) {
         this.visible = true;
-        this.color = GameWorld.cannon.color;
-        this.velocity = Vector2.times(1.2, Vector2.minus(target, GameWorld.cannon.position));
-        this.position = Vector2.minus(GameWorld.cannon.ballPosition, this.imageRect.center);
+        this.color = GameWorld.sprites.cannon.color;
+        this.velocity = Vector2.times(1.2, Vector2.minus(target, GameWorld.sprites.cannon.position));
+        this.position = Vector2.minus(GameWorld.sprites.cannon.ballPosition, this.imageRect.center);
         Sound.Play(Game.audios['shoot_paint'], 0.6);
     }
 

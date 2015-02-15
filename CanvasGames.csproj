@@ -39,9 +39,11 @@
     <TypeScriptCompile Include="GameEngine\Sprite.ts" />
     <TypeScriptCompile Include="GameEngine\System\Color.ts" />
     <TypeScriptCompile Include="GameEngine\System\Keys.ts" />
+    <TypeScriptCompile Include="GameEngine\UI\Button.ts" />
     <TypeScriptCompile Include="GameEngine\UI\Label.ts" />
     <TypeScriptCompile Include="Painter\Ball.ts" />
     <TypeScriptCompile Include="Painter\Cannon.ts" />
+    <TypeScriptCompile Include="Painter\GameOver.ts" />
     <TypeScriptCompile Include="Painter\GameWorld.ts" />
     <TypeScriptCompile Include="Painter\Lives.ts" />
     <TypeScriptCompile Include="Painter\PaintCan.ts" />

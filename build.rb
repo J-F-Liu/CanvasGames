@@ -1,30 +1,29 @@
 require 'fileutils'
 
-def get_typescript_files(dir)
-  scripts = []
-  Dir.entries(dir).each do |entry|
-    if entry == '.' or entry == '..'
-      next
-    end
-    file = File.join(dir, entry)
-    if File.directory? file
-      scripts += get_typescript_files(file)
-    elsif file.end_with?('.ts')
-      scripts << file
+def get_typescript_files(name)
+  engine_scripts = []
+  game_scripts = []
+  html = File.read("#{name}/index.html", encoding: "utf-8")
+  html.lines.each do |line|
+    if match = /\.script\(\"(?<file>[^"]+)\"\)\.wait/.match(line.strip)
+      file = match[:file].sub(/\.js$/, '.ts')
+      if file.start_with? '../GameEngine/'
+        engine_scripts << file.slice(3..-1)
+      else
+        game_scripts << File.join(name, file)
+      end
     end
   end
-  scripts
+  return engine_scripts, game_scripts
 end
 
-def build_typescript_library(srcdir, outfile)
-  scripts = get_typescript_files(srcdir)
+def build_typescript_library(scripts, outfile)
   command = "tsc -t ES5 -d --out #{outfile} #{scripts.join(' ')}"
   puts command
   system(command)
 end
 
-def build_typescript_application(srcdir, libdef, outfile)
-  scripts = get_typescript_files(srcdir)
+def build_typescript_application(scripts, libdef, outfile)
   command = "tsc -t ES5 --out #{outfile} #{libdef} #{scripts.join(' ')}"
   puts command
   system(command)
@@ -70,8 +69,9 @@ def modify_html_file(file)
 end
 
 def build_game(name)
-  build_typescript_library("GameEngine", "out/GameEngine.js")
-  build_typescript_application(name, "out/GameEngine.d.ts", "out/#{name}/GameWorld.js")
+  engine_scripts, game_scripts = get_typescript_files(name)
+  build_typescript_library(engine_scripts, "out/GameEngine.js")
+  build_typescript_application(game_scripts, "out/GameEngine.d.ts", "out/#{name}/GameWorld.js")
   copy_file_if_newer("out/GameEngine.js", "out/#{name}/GameEngine.js")
   copy_file_if_newer("LAB.min.js", "out/LAB.min.js")
   copy_content_files(name, "out/#{name}")
