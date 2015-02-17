@@ -40,6 +40,7 @@
                     GameWorld.sprites.minusTen.emit();
                     Sound.Play(Game.audios['lose_points']);
                 }
+                this.velocity.y += 10;
                 GameWorld.sprites.ball.reset();
             }
             if (this.position.y > Game.viewport.height) {
