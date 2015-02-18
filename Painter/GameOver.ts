@@ -1,4 +1,5 @@
 ﻿class GameOver extends Scene {
+    scoreRankLabel: Label;
     constructor(
         public gameover: StaticImage,
         public playagain: Button) {
@@ -7,6 +8,9 @@
         this.gameover.origin = gameover.imageRect.center;
         this.playagain.position.set(450, 270);
         this.gameover.position.y -= 50;
+        this.scoreRankLabel = new Label("", Color.red);
+        this.scoreRankLabel.position.set(150, 250);
+        this.add(this.scoreRankLabel);
     }
 
     update(frameSpan: number) {

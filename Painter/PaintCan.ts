@@ -47,6 +47,10 @@
                 if (this.color != this.targetColor) {
                     GameWorld.lives -= 1;
                     Sound.Play(Game.audios['bubble_burst']);
+                    if (GameWorld.lives == 0) {
+                        var rank = ScoreSheet.add(GameWorld.score);
+                        GameWorld.sprites.gameover.scoreRankLabel.text = "Your score is " + GameWorld.score + ", rank " + rank;
+                    }
                 }
                 this.restart();
             }

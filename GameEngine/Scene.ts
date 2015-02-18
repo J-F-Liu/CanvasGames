@@ -7,6 +7,10 @@
         this.objects = objects;
     }
 
+    add(gameObj: GameObject) {
+        this.objects.push(gameObj);
+    }
+
     update(frameSpan: number) {
         this.objects.forEach((obj) => {
             obj.update(frameSpan);

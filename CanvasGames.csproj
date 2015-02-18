@@ -48,6 +48,7 @@
     <TypeScriptCompile Include="Painter\Lives.ts" />
     <TypeScriptCompile Include="Painter\PaintCan.ts" />
     <TypeScriptCompile Include="Painter\Score.ts" />
+    <TypeScriptCompile Include="GameEngine\ScoreSheet.ts" />
   </ItemGroup>
   <ItemGroup>
     <None Include="web.Debug.config">
