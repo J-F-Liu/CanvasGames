@@ -78,4 +78,18 @@ def build_game(name)
   modify_html_file("out/#{name}/index.html")
 end
 
-build_game("Painter")
+if ARGV.count > 0
+  game_name = ARGV.first
+  build_game(game_name)
+  system("open", "out/#{game_name}/index.html")
+else
+  Dir.entries('.').each do |entry|
+    if entry == '.' or entry == '..'
+      next
+    end
+    if File.directory? entry and File.exist? File.join(entry, "index.html")
+      puts "build #{entry}"
+      build_game(entry)
+    end
+  end
+end
