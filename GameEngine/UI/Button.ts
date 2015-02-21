@@ -20,7 +20,7 @@
 }
 
 class ToggleButton extends Button {
-    onchange: (newValue: boolean) => void;
+    change: (newValue: boolean) => void;
     constructor(public image: SpriteSheet, public offIndex: number, public onIndex: number) {
         super(image);
         this.click = function () {

@@ -3,7 +3,7 @@
 }
 
 class Level extends Scene {
-    hint: string;
+    tip: string;
     goal: number;
     tiles: TileGrid;
     animals: Animal[] = [];
@@ -16,12 +16,12 @@ class Level extends Scene {
     northArrow = new Arrow(Direction.north);
     hintArrow: Arrow;
     pairList: PairList;
-    helpLabel: Label;
+    tipLabel: Label;
 
     constructor(public levelIndex: number) {
         super();
         var levelData = GameData.levels[levelIndex];
-        this.hint = levelData.hint;
+        this.tip = levelData.hint;
         this.goal = levelData.goal;
         this.loadTiles(levelData.tiles);
         var dirction_name = <string>GameData.directions[levelData.hint_arrow_direction];
@@ -39,11 +39,11 @@ class Level extends Scene {
         this.add(this.westArrow);
         this.add(this.hintArrow);
         this.add(this.pairList);
-        if (GameWorld.options.showTip && this.hint != null && this.hint.length > 0) {
-            this.helpLabel = new Label(this.hint, Color.darkBlue, "Arial", "24px");
-            this.helpLabel.centerTo(GameWorld.sprites.help.region);
-            this.add(GameWorld.sprites.help);
-            this.add(this.helpLabel);
+        if (GameWorld.options.showTip && this.tip != null && this.tip.length > 0) {
+            this.tipLabel = new Label(this.tip, Color.darkBlue, "Arial", "24px");
+            this.tipLabel.centerTo(GameWorld.sprites.frame_tip.region);
+            this.add(GameWorld.sprites.frame_tip);
+            this.add(this.tipLabel);
         }
         this.hasMoves = false;
     }
@@ -75,18 +75,28 @@ class Level extends Scene {
     findAnimalAt(tile: Tile): Animal {
         for (var i = 0; i < this.animals.length; i++) {
             var animal = this.animals[i];
-            if (animal.visible) {
-                if (animal.tile.equals(tile)) {
-                    return animal;
-                }
+            if (animal.visible && animal.tile.equals(tile)) {
+                return animal;
             }
         }
         return null;
     }
 
-    addPair(penguin:Penguin, tile: Tile) {
-        this.pairList.addPair(penguin.color);
-        this.pairs += 1;
+    addPair(penguin: Penguin, tile: Tile) {
+        var flyPenguin = new Particle(penguin.image, 1);
+        flyPenguin.onEmit = function () {
+            flyPenguin.position = tile.position;
+            flyPenguin.velocity = Vector2.minus(GameWorld.currentLevel.pairList.dockPosition, flyPenguin.position);
+        };
+        flyPenguin.onFly = function () {
+            flyPenguin.scale = 1 - 0.5 * flyPenguin.progress;
+        };
+        flyPenguin.onDie = function () {
+            GameWorld.currentLevel.pairList.addPair(penguin.color);
+            GameWorld.currentLevel.pairs += 1;
+        };
+        this.add(flyPenguin);
+        flyPenguin.emit();
         Sound.Play(Game.audios['pair'], GameWorld.options.volume);
     }
 
@@ -111,7 +121,7 @@ class Level extends Scene {
     createTile(char: string, row: number, col: number): Tile {
         switch (char) {
             case '#':
-                return new Tile(TileType.hill, GameWorld.sprites.wall);
+                return new Tile(TileType.hill, GameWorld.sprites.hill);
             case 'R':
             case 'B':
             case 'G':

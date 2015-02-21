@@ -1,18 +1,16 @@
 ﻿// Penguin Pairs Game
-// Junfeng Liu @ 2015-2-14
+// Junfeng Liu @ 2015-2-21
 
 class Sprites {
     background_title = new StaticImage(new SpriteImage(Game.images['background_title']));
     button_play = new Button(new SpriteImage(Game.images['button_play']));
     button_options = new Button(new SpriteImage(Game.images['button_options']));
     button_help = new Button(new SpriteImage(Game.images['button_help']));
+    button_back = new Button(new SpriteImage(Game.images['button_back']));
 
     background_options = new StaticImage(new SpriteImage(Game.images['background_options']));
     onOffLabel = new Label("Hints", Color.darkBlue, "Arial", "60px");
-    button_back = new Button(new SpriteImage(Game.images['button_back']));
-
     onOffButton = new ToggleButton(new SpriteSheet(Game.images['button_offon@2'], 1, 2), 0, 1);
-
     musicText = new Label("Music volume", Color.darkBlue, "Arial", "60px");
     musicSlider = new Slider(new SpriteImage(Game.images['slider_bar']), new SpriteImage(Game.images['slider_button']), 5, 7, 8);
 
@@ -30,9 +28,9 @@ class Sprites {
     button_quit = new Button(new SpriteImage(Game.images['button_quit']));
     level_finish = new Button(new SpriteImage(Game.images['level_finished_click']));
     frame_goal = new StaticImage(new SpriteImage(Game.images['frame_goal']));
-    help = new StaticImage(new SpriteImage(Game.images['help']));
+    frame_tip = new StaticImage(new SpriteImage(Game.images['help']));
 
-    wall = new SpriteImage(Game.images['wall']);
+    hill = new SpriteImage(Game.images['wall']);
     shark = new SpriteImage(Game.images['shark']);
     seal = new SpriteSheet(Game.images['penguin@8'], 1, 8, 7);
 
@@ -60,18 +58,18 @@ class Sprites {
 
         // options
         this.onOffLabel.position.set(150, 360);
-        this.button_back.position.set(415, 720);
         this.musicText.position.set(150, 490);
+        this.button_back.position.set(415, 720);
 
-        this.onOffButton.position = new Vector2(650, 340);
+        this.onOffButton.position.set(650, 340);
         this.onOffButton.on = GameWorld.options.showTip;
-        this.onOffButton.onchange = function (value) {
+        this.onOffButton.change = function (value) {
             GameWorld.options.showTip = value;
         }
 
-        this.musicSlider.position = new Vector2(650, 500);
+        this.musicSlider.position.set(650, 500);
         this.musicSlider.value = GameWorld.options.volume;
-        this.musicSlider.onchange = function (value) {
+        this.musicSlider.change = function (value) {
             Game.audios['music'].volume = value * 0.5;
             GameWorld.options.volume = value;
         }
@@ -84,10 +82,9 @@ class Sprites {
         this.button_quit.position.set(1058, 20);
         this.button_retry.visible = false;
         this.level_finish.visible = false;
-        this.level_finish.origin = this.level_finish.bound.center;
-        this.level_finish.position = Game.viewport.center;
-        this.help.centerTo(Game.viewport);
-        this.help.position.y = 780;
+        this.level_finish.centerTo(Game.viewport);
+        this.frame_tip.centerTo(Game.viewport);
+        this.frame_tip.position.y = 780;
 
         this.button_hint.click = function () {
             GameWorld.currentLevel.hintArrow.visible = true;
@@ -127,8 +124,7 @@ class Scenes {
                 level_button.state = "solved";
             } else if (i == GameWorld.score) {
                 level_button.state = "unsolved";
-            }
-            else {
+            } else {
                 level_button.state = "locked";
             }
         }
@@ -138,7 +134,6 @@ class Scenes {
 class GameWorld {
     static sprites: Sprites;
     static scenes: Scenes;
-    static levels: Array<any>;
     static currentLevel: Level;
     static options = GameSettings.load(GameOptions);
     static scores = GameSettings.load(ScoreSheet);

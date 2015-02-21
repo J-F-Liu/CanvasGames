@@ -11,31 +11,20 @@
 
     update(frameSpan: number) {
         super.update(frameSpan);
-        if (this.visible && this.state != 'hint') {
-            if (Mouse.hover(this.bound)) {
-                this.state = 'hover';
-            } else {
-                this.state = 'normal';
+        if (this.visible) {
+            if (this.state != 'hint') {
+                if (Mouse.hover(this.bound)) {
+                    this.state = 'hover';
+                } else {
+                    this.state = 'normal';
+                }
             }
-        }
-        if (this.visible && Mouse.pressed(this.bound)) {
-            this.animal.selected = false;
-            this.animal.direction = this.direction;
-            switch (this.direction) {
-                case Direction.east:
-                    this.animal.velocity.set(300, 0);
-                    break;
-                case Direction.south:
-                    this.animal.velocity.set(0, 300);
-                    break;
-                case Direction.west:
-                    this.animal.velocity.set(-300, 0);
-                    break;
-                case Direction.north:
-                    this.animal.velocity.set(0, -300);
-                    break;
+            if (Mouse.pressed(this.bound)) {
+                this.animal.selected = false;
+                this.animal.direction = this.direction;
+                this.animal.velocity = Vector2.times(300, Directions.vector(this.direction));
+                GameWorld.currentLevel.hasMoves = true;
             }
-            GameWorld.currentLevel.hasMoves = true;
         }
     }
 

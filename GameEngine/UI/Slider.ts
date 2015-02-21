@@ -2,7 +2,7 @@
     track: StaticImage;
     slug: StaticImage;
     dragging: boolean = false;
-    onchange: (newValue: number) => void;
+    change: (newValue: number) => void;
 
     constructor(track: SpriteImage, slug: SpriteImage,
         public leftmargin: number, public rightmargin: number, public topmargin: number) {
@@ -51,8 +51,8 @@
                     this.track.position.x + this.leftmargin,
                     this.track.position.x + this.track.width - this.slug.width - this.rightmargin);
                 this.dragging = true;
-                if (this.onchange != null) {
-                    this.onchange(this.value);
+                if (this.change != null) {
+                    this.change(this.value);
                 }
             }
         }

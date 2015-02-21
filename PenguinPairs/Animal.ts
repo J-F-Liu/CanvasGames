@@ -26,50 +26,35 @@
             var enteringTile = this.tile.grid.find(position);
             if (enteringTile == null) {
                 this.fall();
-                Sound.Play(Game.audios['lost'], GameWorld.options.volume);
                 return;
             }
 
-            var stayTile = enteringTile.neighbour(Directions.opposite(this.direction));
             switch (enteringTile.type) {
                 case TileType.hill:
-                    this.stop(stayTile);
+                    this.stopBefore(enteringTile);
                     break;
                 case TileType.water:
                     this.fall();
-                    Sound.Play(Game.audios['lost'], GameWorld.options.volume);
                     break;
                 case TileType.trap:
                     var animal = GameWorld.currentLevel.findAnimalAt(enteringTile);
                     if (animal instanceof Penguin) {
-                        if (this instanceof Penguin && Penguin.isPair(<Penguin>this, animal)) {
-                            this.fall();
-                            animal.fall();
-                            GameWorld.currentLevel.addPair(<Penguin>this, enteringTile);
-                        } else {
-                            this.stop(stayTile);
-                        }
+                        this.makePair(animal, enteringTile);
                     } else {
                         this.trap();
-                        this.stop(enteringTile);
+                        this.stopAt(enteringTile);
                     }
                     break;
                 case TileType.ice:
                     var animal = GameWorld.currentLevel.findAnimalAt(enteringTile);
-                    if (animal instanceof Shark) {
-                        this.fall();
-                        animal.fall();
-                        Sound.Play(Game.audios['eat'], GameWorld.options.volume);
+                    if (animal instanceof Penguin) {
+                        this.makePair(animal, enteringTile);
                     } else if (animal instanceof Seal) {
-                        this.stop(stayTile);
-                    } else if (animal instanceof Penguin) {
-                        if (this instanceof Penguin && Penguin.isPair(<Penguin>this, animal)) {
-                            this.fall();
-                            animal.fall();
-                            GameWorld.currentLevel.addPair(<Penguin>this, enteringTile);
-                        } else {
-                            this.stop(stayTile);
-                        }
+                        this.stopBefore(enteringTile);
+                    } else if (animal instanceof Shark) {
+                        this.hide();
+                        animal.hide();
+                        Sound.Play(Game.audios['eat'], GameWorld.options.volume);
                     }
                     break;
             }
@@ -81,15 +66,35 @@
     }
 
     fall() {
+        this.hide();
+        Sound.Play(Game.audios['lost'], GameWorld.options.volume);
+    }
+
+    hide() {
         this.visible = false;
         this.selected = false;
         this.velocity = Vector2.zero;
     }
 
-    stop(tile: Tile) {
-        this.velocity = Vector2.zero;
+    stopBefore(tile: Tile) {
+        var stayTile = tile.neighbour(Directions.opposite(this.direction));
+        this.stopAt(stayTile);
+    }
+
+    stopAt(tile: Tile) {
         this.tile = tile;
         this.position = tile.position;
+        this.velocity = Vector2.zero;
+    }
+
+    makePair(penguin: Penguin, tile: Tile) {
+        if (this instanceof Penguin && Penguin.isPair(<Penguin>this, penguin)) {
+            this.hide();
+            penguin.hide();
+            GameWorld.currentLevel.addPair(<Penguin>this, tile);
+        } else {
+            this.stopBefore(tile);
+        }
     }
 }
 

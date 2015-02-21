@@ -17,4 +17,17 @@ class Directions {
                 return Direction.south;
         }
     }
+
+    static vector(direction: Direction) {
+        switch (direction) {
+            case Direction.east:
+                return new Vector2(1, 0);
+            case Direction.south:
+                return new Vector2(0, 1);
+            case Direction.west:
+                return new Vector2(-1, 0);
+            case Direction.north:
+                return new Vector2(0, -1);
+        }
+    }
 }
