@@ -1,15 +1,29 @@
-﻿class ScoreSheet {
-    static add(score: number) {
-        var scorelist = window.localStorage.getItem("scores");
-        var scores = scorelist == null ? [] : JSON.parse(scorelist);
+﻿class ScoreSheet extends GameSettings {
+
+    maxScore: number = 0;
+    scores: any[] = [];
+
+    get storageKey() {
+        return "scores";
+    }
+
+    update(scoreData: any) {
+        this.maxScore = scoreData.maxScore;
+        this.scores = scoreData.scores;
+    }
+
+    add(score: number) {
+        if (score > this.maxScore) {
+            this.maxScore = score;
+        }
         var rank = 1;
-        for (var i = 0; i < scores.length; i++) {
-            if (scores[i][1] > score) {
+        for (var i = 0; i < this.scores.length; i++) {
+            if (this.scores[i][1] > score) {
                 rank++;
             }
         }
-        scores.push([new Date(Date.now()).toISOString(), score]);
-        window.localStorage.setItem("scores", JSON.stringify(scores));
+        this.scores.push([new Date(Date.now()).toISOString(), score]);
+        this.save();
         return rank;
     }
 } 

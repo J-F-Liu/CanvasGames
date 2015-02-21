@@ -18,9 +18,18 @@
     <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="Painter\app.css" />
-    <Content Include="Painter\index.html" />
+    <Content Include="LAB.min.js" />
+    <Content Include="PenguinPairs\app.css" />
+    <Content Include="PenguinPairs\index.html" />
+    <TypeScriptCompile Include="GameEngine\GameSettings.ts" />
+    <TypeScriptCompile Include="GameEngine\System\Direction.ts" />
+    <TypeScriptCompile Include="GameEngine\UI\Slider.ts" />
+    <TypeScriptCompile Include="PenguinPairs\Arrow.ts" />
+    <TypeScriptCompile Include="PenguinPairs\GameData.ts" />
     <Content Include="web.config" />
+    <TypeScriptCompile Include="PenguinPairs\GameOptions.ts" />
+    <TypeScriptCompile Include="PenguinPairs\LevelButton.ts" />
+    <TypeScriptCompile Include="PenguinPairs\PairList.ts" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="GameEngine\Canvas2D.ts" />
@@ -29,6 +38,7 @@
     <TypeScriptCompile Include="GameEngine\Geometry\Circle.ts" />
     <TypeScriptCompile Include="GameEngine\Geometry\Rectangle.ts" />
     <TypeScriptCompile Include="GameEngine\Geometry\Vector2.ts" />
+    <TypeScriptCompile Include="GameEngine\SpriteSheet.ts" />
     <TypeScriptCompile Include="GameEngine\Input\ButtonState.ts" />
     <TypeScriptCompile Include="GameEngine\Input\Keyboard.ts" />
     <TypeScriptCompile Include="GameEngine\Input\Mouse.ts" />
@@ -37,20 +47,20 @@
     <TypeScriptCompile Include="GameEngine\Scene.ts" />
     <TypeScriptCompile Include="GameEngine\Sound.ts" />
     <TypeScriptCompile Include="GameEngine\Sprite.ts" />
+    <TypeScriptCompile Include="GameEngine\SpriteImage.ts" />
     <TypeScriptCompile Include="GameEngine\System\Color.ts" />
     <TypeScriptCompile Include="GameEngine\System\Keys.ts" />
+    <TypeScriptCompile Include="GameEngine\Tile.ts" />
+    <TypeScriptCompile Include="GameEngine\TileGrid.ts" />
     <TypeScriptCompile Include="GameEngine\UI\Button.ts" />
     <TypeScriptCompile Include="GameEngine\UI\Label.ts" />
-    <TypeScriptCompile Include="Painter\Ball.ts" />
-    <TypeScriptCompile Include="Painter\Cannon.ts" />
-    <TypeScriptCompile Include="Painter\GameOver.ts" />
-    <TypeScriptCompile Include="Painter\GameWorld.ts" />
-    <TypeScriptCompile Include="Painter\Lives.ts" />
-    <TypeScriptCompile Include="Painter\PaintCan.ts" />
-    <TypeScriptCompile Include="Painter\Score.ts" />
     <TypeScriptCompile Include="GameEngine\ScoreSheet.ts" />
+    <TypeScriptCompile Include="PenguinPairs\Animal.ts" />
+    <TypeScriptCompile Include="PenguinPairs\GameWorld.ts" />
+    <TypeScriptCompile Include="PenguinPairs\Level.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="build.rb" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -58,10 +68,7 @@
       <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Painter\audio\" />
-    <Folder Include="Painter\image\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
   </PropertyGroup>

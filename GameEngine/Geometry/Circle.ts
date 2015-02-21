@@ -9,6 +9,10 @@
         return new Vector2(this.x, this.y);
     }
 
+    get center(): Vector2 {
+        return this.position;
+    }
+
     contains(point: Vector2): boolean {
         return Vector2.distance(this.position, point) <= this.radius;
     }

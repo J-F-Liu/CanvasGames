@@ -1,6 +1,7 @@
 ﻿class Scene extends GameObject{
     id: number;
     objects: GameObject[];
+    onStart: () => void = null;
 
     constructor(...objects: GameObject[]) {
         super();
@@ -25,8 +26,6 @@
         }
     }
 
-    onStart: () => void;
-
     reset() {
         this.objects.forEach((obj) => {
             obj.reset();
@@ -36,6 +35,7 @@
 
 class SceneManager {
     private scenes: Scene[] = [];
+    private history: number[] = [];
     currentScene: Scene;
 
     add(scene: Scene): number {
@@ -53,9 +53,22 @@ class SceneManager {
     }
 
     switchTo(id: number) {
+        if (this.currentScene != null) {
+            this.history.push(this.currentScene.id);
+        }
         this.currentScene = this.scenes[id];
-        if (this.currentScene.onStart) {
+        if (this.currentScene.onStart != null) {
             this.currentScene.onStart();
+        }
+    }
+
+    goback() {
+        if (this.history.length > 0) {
+            var id = this.history.pop();
+            this.currentScene = this.scenes[id];
+            if (this.currentScene.onStart != null) {
+                this.currentScene.onStart();
+            }
         }
     }
 } 

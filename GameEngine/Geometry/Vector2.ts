@@ -6,6 +6,10 @@
 
     get length() { return Math.sqrt(this.x * this.x + this.y * this.y); }
 
+    get isZero() {
+        return this.x === 0 && this.y === 0;
+    }
+
     add(v: Vector2) {
         this.x += v.x;
         this.y += v.y;

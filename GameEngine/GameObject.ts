@@ -21,56 +21,55 @@ class StaticImage extends GameObject {
     rotation: number = 0;
     scale: number = 1;
     mirror: boolean = false;
-    imageRect: Rectangle;
 
-    constructor(public image: HTMLImageElement) {
+    constructor(public image: SpriteImage) {
         super();
-        this.imageRect = new Rectangle(0, 0, image.width, image.height);
     }
 
     get size(): Vector2 {
-        return this.imageRect.size;
+        return this.image.size;
     }
 
     get width(): number {
-        return this.imageRect.width;
+        return this.image.width;
     }
 
     get height(): number {
-        return this.imageRect.height;
+        return this.image.height;
     }
 
     get left(): number {
-        return this.position.x;
+        return this.position.x - this.origin.x;
     }
 
     get right(): number {
-        return this.position.x + this.width;
+        return this.left + this.width;
     }
 
     get top(): number {
-        return this.position.y;
+        return this.position.y - this.origin.y;
     }
 
     get bottom(): number {
-        return this.position.y + this.height;
+        return this.top + this.height;
+    }
+
+    get region(): Rectangle {
+        return new Rectangle(this.left, this.top, this.width, this.height);
     }
 
     get bound(): Shape {
-        return new Rectangle(this.position.x, this.position.y, this.imageRect.width, this.imageRect.height);
+        return new Rectangle(this.left, this.top, this.width, this.height);
+    }
+
+    centerTo(region: Rectangle) {
+        this.position.x = region.left + (region.width - this.width) / 2;
+        this.position.y = region.top + (region.height - this.height) / 2;
     }
 
     draw(renderer: Renderer) {
         if (this.visible) {
-            renderer.drawImage(
-                this.image, this.position, this.rotation, this.scale, this.origin, this.imageRect, this.mirror);
+            this.image.draw(this.position, this.rotation, this.scale, this.origin, this.mirror, renderer);
         }
     }
-}
-
-interface Renderer {
-    clear();
-    drawImage(image: HTMLImageElement, position: Vector2, rotation: number, scale: number, origin: Vector2, sourceRect: Rectangle, mirror: boolean);
-    drawText(text: string, position: Vector2, origin: Vector2, color: string, textAlign: string, fontname: string, fontsize: string);
-    drawRectangle(color: string, x: number, y: number, width: number, height: number);
 }

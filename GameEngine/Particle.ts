@@ -1,6 +1,6 @@
 ﻿class Particle extends Sprite {
     age: number = 0;
-    constructor(image: HTMLImageElement,
+    constructor(image: SpriteImage,
         public life: number,
         public onEmit: () => void) {
         super(image);

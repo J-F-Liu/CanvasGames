@@ -1,6 +1,7 @@
 ﻿interface Shape {
     contains(point: Vector2): boolean;
     hasIntersect(shape: Shape): boolean;
+    center: Vector2;
 }
 
 class Rectangle implements Shape {

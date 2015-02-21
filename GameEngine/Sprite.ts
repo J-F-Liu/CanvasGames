@@ -1,7 +1,7 @@
 ﻿class Sprite extends StaticImage {
     velocity: Vector2 = Vector2.zero;
 
-    constructor(image: HTMLImageElement) {
+    constructor(image: SpriteImage) {
         super(image);
     }
 
@@ -27,16 +27,16 @@ class ColoredSprite extends Sprite {
     color: string;
 
     constructor(
-        public colors: { [name: string]: HTMLImageElement },
+        public colors: { [name: string]: SpriteImage },
         defaultColor: string) {
         super(colors[defaultColor]);
         this.color = defaultColor;
+        this.image = this.colors[this.color];
     }
 
     draw(renderer: Renderer) {
         if (this.color != undefined) {
             this.image = this.colors[this.color];
-            this.imageRect = new Rectangle(0, 0, this.image.width, this.image.height);
             super.draw(renderer);
         }
     }
