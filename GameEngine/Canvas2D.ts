@@ -34,22 +34,21 @@
     drawImage(image: HTMLImageElement, position: Vector2, rotation: number, scale: number, origin: Vector2, sourceRect: Rectangle, mirror: boolean) {
         this.context.save();
         if (mirror) {
-            this.context.scale(-scale, scale);
+            this.context.scale(-1, 1);
             this.context.translate(-position.x - sourceRect.width, position.y);
             this.context.rotate(rotation);
             this.context.drawImage(image, sourceRect.x, sourceRect.y,
                 sourceRect.width, sourceRect.height,
                 sourceRect.width - origin.x, -origin.y,
-                sourceRect.width, sourceRect.height);
+                sourceRect.width * scale, sourceRect.height * scale);
         }
         else {
-            this.context.scale(scale, scale);
             this.context.translate(position.x, position.y);
             this.context.rotate(rotation);
             this.context.drawImage(image, sourceRect.x, sourceRect.y,
                 sourceRect.width, sourceRect.height,
                 -origin.x, -origin.y,
-                sourceRect.width, sourceRect.height);
+                sourceRect.width * scale, sourceRect.height * scale);
         }
         this.context.restore();
     }

@@ -25,8 +25,8 @@ class ToggleButton extends Button {
         super(image);
         this.click = function () {
             this.on = !this.on;
-            if (this.onchange != null) {
-                this.onchange(this.on);
+            if (this.change != null) {
+                this.change(this.on);
             }
         }
     }

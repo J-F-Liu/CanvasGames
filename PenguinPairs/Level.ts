@@ -65,7 +65,7 @@ class Level extends Scene {
     get selectedAnimal() {
         for (var i = 0; i < this.animals.length; i++) {
             var animal = this.animals[i];
-            if (animal.selected) {
+            if (animal.visible && animal.selected) {
                 return animal;
             }
         }
@@ -89,7 +89,7 @@ class Level extends Scene {
             flyPenguin.velocity = Vector2.minus(GameWorld.currentLevel.pairList.dockPosition, flyPenguin.position);
         };
         flyPenguin.onFly = function () {
-            flyPenguin.scale = 1 - 0.5 * flyPenguin.progress;
+            flyPenguin.scale = 1 - 0.4 * flyPenguin.progress;
         };
         flyPenguin.onDie = function () {
             GameWorld.currentLevel.pairList.addPair(penguin.color);

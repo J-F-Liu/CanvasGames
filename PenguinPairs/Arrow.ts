@@ -22,7 +22,7 @@
             if (Mouse.pressed(this.bound)) {
                 this.animal.selected = false;
                 this.animal.direction = this.direction;
-                this.animal.velocity = Vector2.times(300, Directions.vector(this.direction));
+                this.animal.velocity = Physics.move(300, Directions.vector(this.direction));
                 GameWorld.currentLevel.hasMoves = true;
             }
         }

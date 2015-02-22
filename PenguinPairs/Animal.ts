@@ -72,8 +72,6 @@
 
     hide() {
         this.visible = false;
-        this.selected = false;
-        this.velocity = Vector2.zero;
     }
 
     stopBefore(tile: Tile) {

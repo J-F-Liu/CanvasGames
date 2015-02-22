@@ -11,7 +11,7 @@
         for (var i = 0; i < this.goal; i++) {
             var indicator = this.indicators[i];
             if (indicator.sheetIndex == 7) {
-                return Vector2.plus(this.position, new Vector2(110 + (i + 1) * indicator.width, 8 + indicator.height));
+                return Vector2.plus(this.position, new Vector2(110 + i * indicator.width, 8));
             }
         }
     }
