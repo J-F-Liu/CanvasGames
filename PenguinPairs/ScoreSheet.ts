@@ -4,7 +4,7 @@
     scores: any[] = [];
 
     get storageKey() {
-        return "scores";
+        return "PenguinPairsScores";
     }
 
     update(scoreData: any) {

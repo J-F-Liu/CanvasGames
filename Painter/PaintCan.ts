@@ -6,9 +6,9 @@
         public targetColor: string) {
         super(
             {
-                red: Game.images['can_red'],
-                green: Game.images['can_green'],
-                blue: Game.images['can_blue'],
+                red: new SpriteImage(Game.images['can_red']),
+                green: new SpriteImage(Game.images['can_green']),
+                blue: new SpriteImage(Game.images['can_blue']),
             }, 'red');
         this.reset();
     }
@@ -48,7 +48,7 @@
                     GameWorld.lives -= 1;
                     Sound.Play(Game.audios['bubble_burst']);
                     if (GameWorld.lives == 0) {
-                        var rank = ScoreSheet.add(GameWorld.score);
+                        var rank = GameWorld.scores.add(GameWorld.score);
                         GameWorld.sprites.gameover.scoreRankLabel.text = "Your score is " + GameWorld.score + ", rank " + rank;
                     }
                 }

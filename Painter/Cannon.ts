@@ -3,11 +3,11 @@
     constructor() {
         super(
             {
-                red: Game.images['cannon_red'],
-                green: Game.images['cannon_green'],
-                blue: Game.images['cannon_blue'],
+                red: new SpriteImage(Game.images['cannon_red']),
+                green: new SpriteImage(Game.images['cannon_green']),
+                blue: new SpriteImage(Game.images['cannon_blue']),
             }, 'red');
-        this.barrel = new StaticImage(Game.images['cannon_barrel']);
+        this.barrel = new StaticImage(new SpriteImage(Game.images['cannon_barrel']));
         this.barrel.position = new Vector2(72, 405);
         this.barrel.origin = new Vector2(34, 34);
         this.position = Vector2.minus(this.barrel.position, Vector2.times(0.52, this.size));

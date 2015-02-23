@@ -2,9 +2,9 @@
     constructor() {
         super(
             {
-                red: Game.images['ball_red'],
-                green: Game.images['ball_green'],
-                blue: Game.images['ball_blue'],
+                red: new SpriteImage(Game.images['ball_red']),
+                green: new SpriteImage(Game.images['ball_green']),
+                blue: new SpriteImage(Game.images['ball_blue']),
             }, 'red');
         this.reset();
     }
@@ -17,7 +17,7 @@
         this.visible = true;
         this.color = GameWorld.sprites.cannon.color;
         this.velocity = Vector2.times(1.2, Vector2.minus(target, GameWorld.sprites.cannon.position));
-        this.position = Vector2.minus(GameWorld.sprites.cannon.ballPosition, this.imageRect.center);
+        this.position = Vector2.minus(GameWorld.sprites.cannon.ballPosition, Vector2.times(0.5, this.size));
         Sound.Play(Game.audios['shoot_paint'], 0.6);
     }
 

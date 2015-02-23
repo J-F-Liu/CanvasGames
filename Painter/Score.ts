@@ -1,7 +1,7 @@
 ﻿class Score extends StaticImage {
     label: Label;
     constructor(image: HTMLImageElement) {
-        super(image);
+        super(new SpriteImage(image));
         this.position.set(10, 10);
         this.label = new Label("", Color.white);
         this.label.position.set(20, 20);

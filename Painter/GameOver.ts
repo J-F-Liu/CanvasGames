@@ -4,8 +4,7 @@
         public gameover: StaticImage,
         public playagain: Button) {
         super(gameover, playagain);
-        this.gameover.position = Game.viewport.center;
-        this.gameover.origin = gameover.imageRect.center;
+        this.gameover.centerTo(Game.viewport);
         this.playagain.position.set(450, 270);
         this.gameover.position.y -= 50;
         this.scoreRankLabel = new Label("", Color.red);

@@ -2,23 +2,25 @@
 // Junfeng Liu @ 2015-2-14
 
 class Sprites {
-    background = new StaticImage(Game.images['background']);
+    background = new StaticImage(new SpriteImage(Game.images['background']));
     cannon = new Cannon();
     can1 = new PaintCan(450, 'red');
     can2 = new PaintCan(582, 'green');
     can3 = new PaintCan(704, 'blue');
     ball = new Ball();
-    plusTen = new Particle(Game.images['plus_ten'], 1, function () {
+    plusTen = new Particle(new SpriteImage(Game.images['plus_ten']), 1, function () {
         GameWorld.sprites.plusTen.position.set(GameWorld.sprites.ball.right, GameWorld.sprites.ball.top);
         GameWorld.sprites.plusTen.velocity.set(54, -60);
     });
-    minusTen = new Particle(Game.images['minus_ten'], 1, function () {
+    minusTen = new Particle(new SpriteImage(Game.images['minus_ten']), 1, function () {
         GameWorld.sprites.minusTen.position.set(GameWorld.sprites.ball.right, GameWorld.sprites.ball.top);
         GameWorld.sprites.minusTen.velocity.set(48, 70);
     });
-    lives = new Lives(new StaticImage(Game.images['lives']));
+    lives = new Lives(new StaticImage(new SpriteImage(Game.images['lives'])));
     score = new Score(Game.images['scorebar']);
-    gameover = new GameOver(new StaticImage(Game.images['gameover']), new Button(Game.images['play_again']));
+    gameover = new GameOver(
+        new StaticImage(new SpriteImage(Game.images['gameover'])),
+        new Button(new SpriteImage(Game.images['play_again'])));
 
     createPlayingScene() {
         var playing = new Scene(
@@ -35,8 +37,9 @@ class Sprites {
 }
 
 class GameWorld {
-    static score: number = 0;
     static lives: number = 5;
+    static score: number = 0;
+    static scores = GameSettings.load(ScoreSheet);
     static sprites: Sprites;
 
     static run() {
