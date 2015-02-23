@@ -5,7 +5,7 @@ class GameData {
     };
     static levels = [
         {
-            "hint": "Click on a penguin and select the arrow to let it move towards the other penguin.",
+            "tip": "Click on a penguin and select the arrow to let it move towards the other penguin.",
             "goal": 1,
             "hint_arrow_x": 4,
             "hint_arrow_y": 3,
@@ -23,7 +23,7 @@ class GameData {
             ]
         },
         {
-            "hint": "Don't let the penguins fall in the water!",
+            "tip": "Don't let the penguins fall in the water!",
             "goal": 1,
             "hint_arrow_x": 3,
             "hint_arrow_y": 1,
@@ -41,7 +41,7 @@ class GameData {
             ]
         },
         {
-            "hint": "The order in which you move the penguins matters.",
+            "tip": "The order in which you move the penguins matters.",
             "goal": 1,
             "hint_arrow_x": 8,
             "hint_arrow_y": 1,
@@ -58,7 +58,7 @@ class GameData {
             ]
         },
         {
-            "hint": "Create multiple pairs. The number of required pairs is indicated at the top.",
+            "tip": "Create multiple pairs. The number of required pairs is indicated at the top.",
             "goal": 5,
             "hint_arrow_x": 3,
             "hint_arrow_y": 4,
@@ -76,7 +76,7 @@ class GameData {
             ]
         },
         {
-            "hint": "Pair each penguin with a similar one.",
+            "tip": "Pair each penguin with a similar one.",
             "goal": 2,
             "hint_arrow_x": 5,
             "hint_arrow_y": 6,
@@ -94,7 +94,7 @@ class GameData {
             ]
         },
         {
-            "hint": "Animals sometimes must be sacrificed to arrange all required pairs.",
+            "tip": "Animals sometimes must be sacrificed to arrange all required pairs.",
             "goal": 2,
             "hint_arrow_x": 1,
             "hint_arrow_y": 4,
@@ -103,16 +103,16 @@ class GameData {
                 " ...  ",
                 "..r.. ",
                 "..... ",
-                "..b..*",
+                "..b..#",
                 "..g.. ",
-                "..b..*",
+                "..b..#",
                 "..... ",
                 "..r.. ",
                 " ...  "
             ]
         },
         {
-            "hint": "Multi-colored penguins pair with any penguin.",
+            "tip": "Multi-colored penguins pair with any penguin.",
             "goal": 2,
             "hint_arrow_x": 4,
             "hint_arrow_y": 3,
@@ -130,17 +130,17 @@ class GameData {
             ]
         },
         {
-            "hint": "Use the seals to stop the penguins from moving.",
+            "tip": "Use the seals to stop the penguins from moving.",
             "goal": 1,
             "hint_arrow_x": 5,
             "hint_arrow_y": 4,
             "hint_arrow_direction": 1,
             "tiles": [
                 ".......",
-                ".....x.",
-                ".x.x...",
+                ".....s.",
+                ".s.s...",
                 ".......",
-                "...x...",
+                "...s...",
                 ".....b.",
                 ".......",
                 "..b....",
@@ -148,7 +148,7 @@ class GameData {
             ]
         },
         {
-            "hint": "Use all the penguins to pair the blue penguins.",
+            "tip": "Use all the penguins to pair the blue penguins.",
             "goal": 1,
             "hint_arrow_x": 4,
             "hint_arrow_y": 1,
@@ -166,25 +166,25 @@ class GameData {
             ]
         },
         {
-            "hint": "The penguin in the hole cannot move.",
+            "tip": "The penguin in the trap cannot move.",
             "goal": 1,
             "hint_arrow_x": 5,
             "hint_arrow_y": 2,
             "hint_arrow_direction": 1,
             "tiles": [
                 ".......",
-                ".....x.",
-                ".x.....",
-                ".....x.",
+                ".....s.",
+                ".s.....",
+                ".....s.",
                 ".......",
-                ".x...r.",
-                "..x....",
+                ".s...r.",
+                "..s....",
                 "...R...",
                 "......."
             ]
         },
         {
-            "hint": "Catch the penguin in the hole.",
+            "tip": "Catch the penguin in the trap.",
             "goal": 1,
             "hint_arrow_x": 5,
             "hint_arrow_y": 4,
@@ -193,16 +193,16 @@ class GameData {
                 ".......",
                 ".......",
                 ".......",
-                ".r..Xx.",
+                ".r..Xs.",
                 ".......",
                 ".......",
                 ".......",
                 "...r...",
-                ".....x."
+                ".....s."
             ]
         },
         {
-            "hint": "Use the seals to get the sharks out of the way in order to make the pair.",
+            "tip": "Use the seals to get the sharks out of the way in order to make the pair.",
             "goal": 1,
             "hint_arrow_x": 5,
             "hint_arrow_y": 4,
@@ -211,12 +211,69 @@ class GameData {
                 ".......",
                 "...p...",
                 ".......",
-                ".x.@.x.",
+                ".s.@.s.",
                 "...@...",
                 "...@...",
-                ".@...x.",
-                ".x.p...",
+                ".@...s.",
+                ".s.p...",
                 "......."
+            ]
+        },
+        {
+            "tip": "",
+            "goal": 3,
+            "hint_arrow_x": 7,
+            "hint_arrow_y": 7,
+            "hint_arrow_direction": 1,
+            "tiles": [
+                "   ###   ",
+                "   #g#   ",
+                "####.####",
+                "#r..X..b#",
+                "####.####",
+                "####.####",
+                "#...p...#",
+                "#.##.##.#",
+                "#y##.##o#",
+                "#g##b##r#",
+            ]
+        },
+        {
+            "tip": "",
+            "goal": 1,
+            "hint_arrow_x": 1,
+            "hint_arrow_y": 0,
+            "hint_arrow_direction": 0,
+            "tiles": [
+                "b.........r",
+                ".o...s.....",
+                "........s..",
+                "...s.......",
+                "@....@s...@",
+                "....@b@....",
+                "..s..@.....",
+                ".......s...",
+                "p..........",
+                ".....s...g."
+            ]
+        },
+        {
+            "tip": "",
+            "goal": 7,
+            "hint_arrow_x": 5,
+            "hint_arrow_y": 3,
+            "hint_arrow_direction": 1,
+            "tiles": [
+                "...........",
+                "..b..@..b..",
+                "..r.@.@.r..",
+                "..@.....@..",
+                "..y..s..y..",
+                "..g..X..g..",
+                "..@.....@..",
+                "..p.m m.p..",
+                "..o.r.g.o..",
+                "...........",
             ]
         }
     ];

@@ -1,37 +1,34 @@
 ﻿class PairList extends GameObject {
+    filled: number = 0;
     indicators: SpriteSheet[] = [];
+    indicatorWidth: number;
     constructor(public goal: number) {
         super();
         for (var i = 0; i < goal; i++) {
             this.indicators.push(new SpriteSheet(Game.images['penguin_pairs@8'], 1, 8, 7));
         }
+        this.indicatorWidth = this.indicators[0].width;
+    }
+
+    get finished() {
+        return this.filled >= this.goal;
     }
 
     get dockPosition() {
-        for (var i = 0; i < this.goal; i++) {
-            var indicator = this.indicators[i];
-            if (indicator.sheetIndex == 7) {
-                return Vector2.plus(this.position, new Vector2(110 + i * indicator.width, 8));
-            }
-        }
+        return Vector2.plus(this.position, new Vector2(110 + this.filled * this.indicatorWidth, 8));
     }
 
     addPair(color: string) {
-        for (var i = 0; i < this.goal; i++) {
-            if (this.indicators[i].sheetIndex == 7) {
-                this.indicators[i].sheetIndex = Penguin.colors.indexOf(color);
-                break;
-            }
-        }
+        this.indicators[this.filled].sheetIndex = Penguin.colors.indexOf(color);
+        this.filled += 1;
     }
 
     draw(renderer: Renderer) {
         GameWorld.sprites.frame_goal.position = this.position;
         GameWorld.sprites.frame_goal.draw(renderer);
         for (var i = 0; i < this.goal; i++) {
-            var indicator = this.indicators[i];
-            var position = Vector2.plus(this.position, new Vector2(110 + i * indicator.width, 8));
-            indicator.draw(position, 0, 1, Vector2.zero, false, renderer);
+            var position = Vector2.plus(this.position, new Vector2(110 + i * this.indicatorWidth, 8));
+            this.indicators[i].draw(position, 0, 1, Vector2.zero, false, renderer);
         }
     }
 }

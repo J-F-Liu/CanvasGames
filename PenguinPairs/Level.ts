@@ -7,7 +7,6 @@ class Level extends Scene {
     goal: number;
     tiles: TileGrid;
     animals: Animal[] = [];
-    pairs: number = 0;
     _hasMoves: boolean = false;
 
     eastArrow = new Arrow(Direction.east);
@@ -21,7 +20,7 @@ class Level extends Scene {
     constructor(public levelIndex: number) {
         super();
         var levelData = GameData.levels[levelIndex];
-        this.tip = levelData.hint;
+        this.tip = levelData.tip;
         this.goal = levelData.goal;
         this.loadTiles(levelData.tiles);
         var dirction_name = <string>GameData.directions[levelData.hint_arrow_direction];
@@ -93,7 +92,6 @@ class Level extends Scene {
         };
         flyPenguin.onDie = function () {
             GameWorld.currentLevel.pairList.addPair(penguin.color);
-            GameWorld.currentLevel.pairs += 1;
         };
         this.add(flyPenguin);
         flyPenguin.emit();
@@ -108,7 +106,7 @@ class Level extends Scene {
         this.westArrow.indicate(animal);
         this.northArrow.indicate(animal);
 
-        if (this.pairs >= this.goal) {
+        if (this.pairList.finished) {
             GameWorld.sprites.level_finish.visible = true;
             var score = this.levelIndex + 1;
             if (score > GameWorld.score) {
@@ -156,7 +154,7 @@ class Level extends Scene {
             case 'Y':
             case 'M':
                 return new Penguin(char.toLowerCase(), true);
-            case 'x':
+            case 's':
                 return new Seal();
             case '@':
                 return new Shark();

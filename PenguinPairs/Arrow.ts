@@ -31,7 +31,7 @@
     indicate(animal: Animal) {
         if (animal != null) {
             var tile = animal.tile.neighbour(this.direction);
-            this.visible = tile != null && Animal.canReach(tile);
+            this.visible = tile != null && animal.canReach(tile);
             if (this.visible) {
                 this.animal = animal;
                 this.position = tile.position;
