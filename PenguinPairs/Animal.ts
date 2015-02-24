@@ -9,9 +9,9 @@
             case TileType.hill:
                 return false;
             case TileType.water:
-            case TileType.trap:
                 return true;
             case TileType.ice:
+            case TileType.trap:
                 var animal = GameWorld.currentLevel.findAnimalAt(tile);
                 if (animal == null || animal instanceof Shark || this.isPair(animal)) {
                     return true;
@@ -54,6 +54,8 @@
                     var animal = GameWorld.currentLevel.findAnimalAt(enteringTile);
                     if (this.isPair(animal)) {
                         this.makePair(<Penguin>animal, enteringTile);
+                    } else if (animal != null) {
+                        this.stopBefore(enteringTile);
                     } else {
                         this.trap();
                         this.stopAt(enteringTile);
