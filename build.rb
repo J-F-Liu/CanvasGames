@@ -78,10 +78,18 @@ def build_game(name)
   modify_html_file("out/#{name}/index.html")
 end
 
+def open_file(file)
+  if (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
+    system("start", file)
+  else
+    system("open", file)
+  end
+end
+
 if ARGV.count > 0
   game_name = ARGV.first
   build_game(game_name)
-  system("open", "out/#{game_name}/index.html")
+  open_file("out/#{game_name}/index.html")
 else
   Dir.entries('.').each do |entry|
     if entry == '.' or entry == '..'

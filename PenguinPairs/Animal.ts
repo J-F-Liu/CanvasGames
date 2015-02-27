@@ -102,10 +102,8 @@
     }
 
     isPair(animal: Animal) {
-        if (animal instanceof Penguin) {
-            if (this instanceof Penguin && Penguin.isPair(<Penguin>this, animal)) {
-                return true;
-            }
+        if (this instanceof Penguin && animal instanceof Penguin) {
+            return Penguin.isPair(<Penguin>this, <Penguin>animal);
         }
         return false;
     }
