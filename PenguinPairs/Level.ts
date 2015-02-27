@@ -128,11 +128,11 @@ class Level extends Scene {
             case 'Y':
             case 'M':
             case 'X':
-                return new Tile(TileType.trap, new SpriteSheet(Game.images['penguin_boxed@8'], 1, 8, 7));
+                return new Tile(TileType.trap, GameWorld.sprites.trap);
             case ' ':
                 return new Tile(TileType.water);
             default:
-                return new Tile(TileType.ice, new SpriteSheet(Game.images['field@2'], 1, 2, row + col % 2));
+                return new Tile(TileType.ice, Maths.even(row + col) ? GameWorld.sprites.ice_white : GameWorld.sprites.ice_blue);
         }
     }
 

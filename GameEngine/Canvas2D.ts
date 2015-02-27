@@ -1,4 +1,11 @@
-﻿class Canvas2D implements Renderer {
+﻿interface Renderer {
+    clear();
+    drawImage(image: HTMLImageElement, position: Vector2, rotation: number, scale: number, origin: Vector2, sourceRect: Rectangle, mirror: boolean);
+    drawText(text: string, position: Vector2, origin: Vector2, color: string, textAlign: string, fontname: string, fontsize: string);
+    drawRectangle(color: string, x: number, y: number, width: number, height: number);
+}
+
+class Canvas2D implements Renderer {
     private canvas: HTMLCanvasElement;
     private context: CanvasRenderingContext2D;
 

@@ -21,14 +21,10 @@
     set sheetIndex(value: number) {
         if (value >= 0) {
             this._sheetIndex = value % this.cells;
+            var rowIndex = Math.floor(this.sheetIndex / this.cols);
+            var colIndex = this.sheetIndex % this.cols;
+            this.imageRect.x = colIndex * this.width;
+            this.imageRect.y = rowIndex * this.height;
         }
-    }
-
-    draw(position: Vector2, rotation: number, scale: number, origin: Vector2, mirror: boolean, renderer: Renderer) {
-        var rowIndex = Math.floor(this.sheetIndex / this.cols);
-        var colIndex = this.sheetIndex % this.cols;
-        this.imageRect.x = colIndex * this.width;
-        this.imageRect.y = rowIndex * this.height;
-        super.draw(position, rotation, scale, origin, mirror, renderer);
     }
 }

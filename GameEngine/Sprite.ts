@@ -24,20 +24,21 @@
 }
 
 class ColoredSprite extends Sprite {
-    color: string;
+    private _color: string;
 
     constructor(
         public colors: { [name: string]: SpriteImage },
         defaultColor: string) {
         super(colors[defaultColor]);
         this.color = defaultColor;
-        this.image = this.colors[this.color];
     }
 
-    draw(renderer: Renderer) {
-        if (this.color != undefined) {
-            this.image = this.colors[this.color];
-            super.draw(renderer);
-        }
+    get color() {
+        return this._color;
+    }
+
+    set color(value: string) {
+        this._color = value;
+        this.image = this.colors[this._color];
     }
 } 

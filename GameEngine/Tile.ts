@@ -1,6 +1,4 @@
-﻿
-
-class Tile {
+﻿class Tile {
     rowIndex: number;
     colIndex: number;
     grid: TileGrid;

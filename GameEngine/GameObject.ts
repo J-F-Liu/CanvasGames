@@ -1,9 +1,7 @@
 ﻿class GameObject {
 
     position: Vector2 = Vector2.zero;
-
     origin: Vector2 = Vector2.zero;
-
     visible: boolean = true;
 
     //frameSpan is the time passed from previous frame in seconds

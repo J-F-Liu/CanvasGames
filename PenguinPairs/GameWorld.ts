@@ -33,6 +33,9 @@ class Sprites {
     hill = new SpriteImage(Game.images['wall']);
     shark = new SpriteImage(Game.images['shark']);
     seal = new SpriteSheet(Game.images['penguin@8'], 1, 8, 7);
+    trap = new SpriteSheet(Game.images['penguin_boxed@8'], 1, 8, 7);
+    ice_white = new SpriteSheet(Game.images['field@2'], 1, 2, 0);
+    ice_blue = new SpriteSheet(Game.images['field@2'], 1, 2, 1);
 
     constructor() {
         // title
@@ -149,7 +152,7 @@ class GameWorld {
             "background_help.jpg", "background_level.jpg", "background_levelselect.jpg", "background_options.jpg", "background_title.jpg",
             "button_back.jpg", "button_help.jpg", "button_hint.png", "button_offon@2.png", "button_options.jpg", "button_play.jpg", "button_quit.png", "button_retry.png",
             "field@2.png", "frame_goal.jpg", "help.jpg", "level_finished_click.png", "level_finished_tap.png", "level_solved@6.png", "level_unsolved.png",
-            "lock.png", "penguin@4x2.png", "penguin@8.png", "penguin_boxed@8.png", "penguin_empty.png", "penguin_pairs@8.png", "shark.png", "slider_bar.jpg", "slider_button.jpg", "wall.png"
+            "lock.png", "penguin@8.png", "penguin_boxed@8.png", "penguin_pairs@8.png", "shark.png", "slider_bar.jpg", "slider_button.jpg", "wall.png"
             );
 
 

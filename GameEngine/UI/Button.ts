@@ -45,20 +45,21 @@ class ToggleButton extends Button {
 }
 
 class StatefulButton extends Button {
-    state: string;
+    private _state: string;
 
     constructor(
         public states: { [name: string]: SpriteImage },
         defaultState: string) {
         super(states[defaultState]);
         this.state = defaultState;
-        this.image = this.states[this.state];
     }
 
-    draw(renderer: Renderer) {
-        if (this.state != undefined) {
-            this.image = this.states[this.state];
-            super.draw(renderer);
-        }
+    get state() {
+        return this._state;
+    }
+
+    set state(value: string) {
+        this._state = value;
+        this.image = this.states[this._state];
     }
 }

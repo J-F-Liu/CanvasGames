@@ -18,6 +18,7 @@
     set position(value: Vector2) {
         if (this.track != undefined) {
             this.track.position = value;
+            this.slug.position.y = this.track.position.y + this.topmargin;
         }
     }
 
@@ -30,24 +31,15 @@
     set value(value: number) {
         var trackWidth = this.track.width - this.leftmargin - this.rightmargin - this.slug.width;
         var slugPos = trackWidth * value;
-        this.slug.position.set(this.track.position.x + this.leftmargin + slugPos, this.position.y + this.topmargin);
-    }
-
-    static clamp(value, min, max) {
-        if (value < min)
-            return min;
-        else if (value > max)
-            return max;
-        else
-            return value;
+        this.slug.position.x = this.track.position.x + this.leftmargin + slugPos;
+        this.slug.position.y = this.track.position.y + this.topmargin;
     }
 
     update(frameSpan: number) {
         if (Mouse.left.down) {
             var mousePos = Mouse.position;
             if (this.track.bound.contains(mousePos) || this.dragging) {
-                this.slug.position = new Vector2(0, this.track.position.y + this.topmargin);
-                this.slug.position.x = Slider.clamp(mousePos.x - this.slug.width / 2,
+                this.slug.position.x = Maths.clamp(mousePos.x - this.slug.width / 2,
                     this.track.position.x + this.leftmargin,
                     this.track.position.x + this.track.width - this.slug.width - this.rightmargin);
                 this.dragging = true;
@@ -62,7 +54,6 @@
     }
 
     draw(renderer: Renderer) {
-        super.draw(renderer);
         this.track.draw(renderer);
         this.slug.draw(renderer);
     }
