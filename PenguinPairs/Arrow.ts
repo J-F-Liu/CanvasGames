@@ -10,8 +10,8 @@
     }
 
     update(frameSpan: number) {
-        super.update(frameSpan);
         if (this.visible) {
+            super.update(frameSpan);
             if (this.state != 'hint') {
                 if (Mouse.hover(this.bound)) {
                     this.state = 'hover';
@@ -19,7 +19,7 @@
                     this.state = 'normal';
                 }
             }
-            if (Mouse.pressed(this.bound)) {
+            if (this.pressed) {
                 this.animal.selected = false;
                 this.animal.direction = this.direction;
                 this.animal.velocity = Physics.move(300, Directions.vector(this.direction));

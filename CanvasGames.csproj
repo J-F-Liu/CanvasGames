@@ -19,48 +19,60 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="LAB.min.js" />
-    <Content Include="Painter\app.css" />
-    <Content Include="Painter\audio\bubble_burst.mp3" />
-    <Content Include="Painter\audio\collect_points.mp3" />
-    <Content Include="Painter\audio\lose_points.mp3" />
-    <Content Include="Painter\audio\music.mp3" />
-    <Content Include="Painter\audio\shoot_paint.mp3" />
-    <Content Include="Painter\Ball.js" />
-    <Content Include="Painter\Cannon.js" />
-    <Content Include="Painter\GameOver.js" />
-    <Content Include="Painter\GameWorld.js" />
-    <Content Include="Painter\image\background.jpg" />
-    <Content Include="Painter\image\ball_blue.png" />
-    <Content Include="Painter\image\ball_green.png" />
-    <Content Include="Painter\image\ball_red.png" />
-    <Content Include="Painter\image\cannon_barrel.png" />
-    <Content Include="Painter\image\cannon_blue.png" />
-    <Content Include="Painter\image\cannon_green.png" />
-    <Content Include="Painter\image\cannon_red.png" />
-    <Content Include="Painter\image\can_blue.png" />
-    <Content Include="Painter\image\can_green.png" />
-    <Content Include="Painter\image\can_red.png" />
-    <Content Include="Painter\image\gameover.png" />
-    <Content Include="Painter\image\lives.png" />
-    <Content Include="Painter\image\minus_ten.png" />
-    <Content Include="Painter\image\play_again.png" />
-    <Content Include="Painter\image\plus_ten.png" />
-    <Content Include="Painter\image\scorebar.jpg" />
-    <Content Include="Painter\index.html" />
-    <Content Include="Painter\Lives.js" />
-    <Content Include="Painter\PaintCan.js" />
-    <Content Include="Painter\Score.js" />
+    <TypeScriptCompile Include="GameEngine\AnimatedSprite.ts" />
+    <TypeScriptCompile Include="GameEngine\Animation.ts" />
     <TypeScriptCompile Include="GameEngine\GameSettings.ts" />
+    <TypeScriptCompile Include="GameEngine\Maths.ts" />
     <TypeScriptCompile Include="GameEngine\System\Direction.ts" />
     <TypeScriptCompile Include="GameEngine\UI\Slider.ts" />
-    <TypeScriptCompile Include="Painter\Ball.ts" />
-    <TypeScriptCompile Include="Painter\Cannon.ts" />
-    <TypeScriptCompile Include="Painter\GameOver.ts" />
-    <TypeScriptCompile Include="Painter\GameWorld.ts" />
-    <TypeScriptCompile Include="Painter\Lives.ts" />
-    <TypeScriptCompile Include="Painter\PaintCan.ts" />
-    <TypeScriptCompile Include="Painter\Score.ts" />
+    <Content Include="PenguinPairs\app.css" />
+    <Content Include="PenguinPairs\audio\eat.mp3" />
+    <Content Include="PenguinPairs\audio\lost.mp3" />
+    <Content Include="PenguinPairs\audio\music.mp3" />
+    <Content Include="PenguinPairs\audio\pair.mp3" />
+    <Content Include="PenguinPairs\audio\won.mp3" />
+    <Content Include="PenguinPairs\image\arrow%404.png" />
+    <Content Include="PenguinPairs\image\arrow_hint%404.png" />
+    <Content Include="PenguinPairs\image\arrow_hover%404.png" />
+    <Content Include="PenguinPairs\image\background_help.jpg" />
+    <Content Include="PenguinPairs\image\background_level.jpg" />
+    <Content Include="PenguinPairs\image\background_levelselect.jpg" />
+    <Content Include="PenguinPairs\image\background_options.jpg" />
+    <Content Include="PenguinPairs\image\background_title.jpg" />
+    <Content Include="PenguinPairs\image\button_back.jpg" />
+    <Content Include="PenguinPairs\image\button_help.jpg" />
+    <Content Include="PenguinPairs\image\button_hint.png" />
+    <Content Include="PenguinPairs\image\button_offon%402.png" />
+    <Content Include="PenguinPairs\image\button_options.jpg" />
+    <Content Include="PenguinPairs\image\button_play.jpg" />
+    <Content Include="PenguinPairs\image\button_quit.png" />
+    <Content Include="PenguinPairs\image\button_retry.png" />
+    <Content Include="PenguinPairs\image\field%402.png" />
+    <Content Include="PenguinPairs\image\frame_goal.jpg" />
+    <Content Include="PenguinPairs\image\help.jpg" />
+    <Content Include="PenguinPairs\image\level_finished_click.png" />
+    <Content Include="PenguinPairs\image\level_finished_tap.png" />
+    <Content Include="PenguinPairs\image\level_solved%406.png" />
+    <Content Include="PenguinPairs\image\level_unsolved.png" />
+    <Content Include="PenguinPairs\image\lock.png" />
+    <Content Include="PenguinPairs\image\penguin%408.png" />
+    <Content Include="PenguinPairs\image\penguin_boxed%408.png" />
+    <Content Include="PenguinPairs\image\penguin_pairs%408.png" />
+    <Content Include="PenguinPairs\image\shark.png" />
+    <Content Include="PenguinPairs\image\slider_bar.jpg" />
+    <Content Include="PenguinPairs\image\slider_button.jpg" />
+    <Content Include="PenguinPairs\image\wall.png" />
+    <Content Include="PenguinPairs\index.html" />
     <Content Include="web.config" />
+    <TypeScriptCompile Include="PenguinPairs\Animal.ts" />
+    <TypeScriptCompile Include="PenguinPairs\Arrow.ts" />
+    <TypeScriptCompile Include="PenguinPairs\GameData.ts" />
+    <TypeScriptCompile Include="PenguinPairs\GameOptions.ts" />
+    <TypeScriptCompile Include="PenguinPairs\GameWorld.ts" />
+    <TypeScriptCompile Include="PenguinPairs\Level.ts" />
+    <TypeScriptCompile Include="PenguinPairs\LevelButton.ts" />
+    <TypeScriptCompile Include="PenguinPairs\PairList.ts" />
+    <TypeScriptCompile Include="PenguinPairs\ScoreSheet.ts" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="GameEngine\Canvas2D.ts" />
@@ -85,22 +97,14 @@
     <TypeScriptCompile Include="GameEngine\TileGrid.ts" />
     <TypeScriptCompile Include="GameEngine\UI\Button.ts" />
     <TypeScriptCompile Include="GameEngine\UI\Label.ts" />
-    <TypeScriptCompile Include="Painter\ScoreSheet.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="build.rb" />
-    <Content Include="Painter\audio\bubble_burst.ogg" />
-    <Content Include="Painter\audio\collect_points.ogg" />
-    <Content Include="Painter\audio\lose_points.ogg" />
-    <Content Include="Painter\audio\music.ogg" />
-    <Content Include="Painter\audio\shoot_paint.ogg" />
-    <Content Include="Painter\Ball.js.map" />
-    <Content Include="Painter\Cannon.js.map" />
-    <Content Include="Painter\GameOver.js.map" />
-    <Content Include="Painter\GameWorld.js.map" />
-    <Content Include="Painter\Lives.js.map" />
-    <Content Include="Painter\PaintCan.js.map" />
-    <Content Include="Painter\Score.js.map" />
+    <Content Include="PenguinPairs\audio\eat.ogg" />
+    <Content Include="PenguinPairs\audio\lost.ogg" />
+    <Content Include="PenguinPairs\audio\music.ogg" />
+    <Content Include="PenguinPairs\audio\pair.ogg" />
+    <Content Include="PenguinPairs\audio\won.ogg" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -108,9 +112,7 @@
       <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="PenguinPairs\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
   </PropertyGroup>

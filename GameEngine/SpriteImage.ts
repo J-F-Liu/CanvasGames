@@ -16,6 +16,9 @@
         return this.imageRect.height;
     }
 
+    update(frameSpan: number) {
+    }
+
     draw(position: Vector2, rotation: number, scale: number, origin: Vector2, mirror: boolean, renderer: Renderer) {
         renderer.drawImage(this.image, position, rotation, scale, origin, this.imageRect, mirror);
     }

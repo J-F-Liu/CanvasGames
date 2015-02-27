@@ -1,5 +1,9 @@
 ﻿class Label extends GameObject {
-    constructor(public text: string, public color: string, public fontname: string = "Courier New", public fontsize: string = "20px") {
+    constructor(
+        public text: string,
+        public color: string,
+        public fontname: string = "Courier New",
+        public fontsize: string = "20px") {
         super();
     }
 

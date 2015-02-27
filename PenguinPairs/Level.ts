@@ -32,12 +32,7 @@ class Level extends Scene {
         this.hintArrow.animal = this.findAnimalAt(hint_tile.neighbour(Directions.opposite(hint_arrow_direction)));
         this.pairList = new PairList(this.goal);
         this.pairList.position.set(20, 15);
-        this.add(this.eastArrow);
-        this.add(this.northArrow);
-        this.add(this.southArrow);
-        this.add(this.westArrow);
-        this.add(this.hintArrow);
-        this.add(this.pairList);
+        this.add(this.eastArrow, this.northArrow, this.southArrow, this.westArrow, this.hintArrow, this.pairList);
         if (GameWorld.options.showTip && this.tip != null && this.tip.length > 0) {
             this.tipLabel = new Label(this.tip, Color.darkBlue, "Arial", "24px");
             this.tipLabel.centerTo(GameWorld.sprites.frame_tip.region);
@@ -178,10 +173,10 @@ class Level extends Scene {
                     animal.tile = tile;
                     animal.position = tile.position;
                     this.animals.push(animal);
-                    this.add(animal);
                 }
             }
         }
         this.tiles = tileGrid;
+        this.addArray(this.animals);
     }
 } 

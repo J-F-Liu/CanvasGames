@@ -1,4 +1,4 @@
-﻿class Scene extends GameObject{
+﻿class Scene extends GameObject {
     id: number;
     objects: GameObject[];
     onStart: () => void = null;
@@ -8,8 +8,14 @@
         this.objects = objects;
     }
 
-    add(gameObj: GameObject) {
-        this.objects.push(gameObj);
+    add(...gameObjs: GameObject[]) {
+        this.addArray(gameObjs);
+    }
+
+    addArray(gameObjs: GameObject[]) {
+        for (var i = 0; i < gameObjs.length; i++) {
+            this.objects.push(gameObjs[i]);
+        }
     }
 
     update(frameSpan: number) {
