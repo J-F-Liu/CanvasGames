@@ -15,6 +15,11 @@
         return !this.looping && this.sheetIndex == this.endIndex;
     }
 
+    play() {
+        this.time = 0;
+        this.sheetIndex = this.startIndex;
+    }
+
     update(frameSpan: number) {
         this.time += frameSpan;
         while (this.time > this.frameTime) {

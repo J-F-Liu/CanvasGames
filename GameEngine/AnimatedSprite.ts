@@ -15,6 +15,7 @@
     set animation(value: string) {
         this._animation = value;
         this.image = this.animations[this._animation];
+        this.animations[this._animation].play();
     }
 
     update(frameSpan: number) {
