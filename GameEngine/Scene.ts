@@ -1,42 +1,6 @@
-﻿class Scene extends GameObject {
+﻿class Scene extends GameObjectGroup {
     id: number;
-    objects: GameObject[];
     onStart: () => void = null;
-
-    constructor(...objects: GameObject[]) {
-        super();
-        this.objects = objects;
-    }
-
-    add(...gameObjs: GameObject[]) {
-        this.addArray(gameObjs);
-    }
-
-    addArray(gameObjs: GameObject[]) {
-        for (var i = 0; i < gameObjs.length; i++) {
-            this.objects.push(gameObjs[i]);
-        }
-    }
-
-    update(frameSpan: number) {
-        this.objects.forEach((obj) => {
-            obj.update(frameSpan);
-        });
-    }
-
-    draw(renderer: Renderer) {
-        if (this.visible) {
-            this.objects.forEach((obj) => {
-                obj.draw(renderer);
-            });
-        }
-    }
-
-    reset() {
-        this.objects.forEach((obj) => {
-            obj.reset();
-        });
-    }
 }
 
 class SceneManager {

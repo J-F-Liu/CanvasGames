@@ -21,8 +21,10 @@
     <Content Include="LAB.min.js" />
     <TypeScriptCompile Include="GameEngine\AnimatedSprite.ts" />
     <TypeScriptCompile Include="GameEngine\Animation.ts" />
+    <TypeScriptCompile Include="GameEngine\GameObjectGroup.ts" />
     <TypeScriptCompile Include="GameEngine\GameSettings.ts" />
     <TypeScriptCompile Include="GameEngine\Maths.ts" />
+    <TypeScriptCompile Include="GameEngine\ParticleSource.ts" />
     <TypeScriptCompile Include="GameEngine\System\Direction.ts" />
     <TypeScriptCompile Include="GameEngine\UI\Slider.ts" />
     <Content Include="PenguinPairs\app.css" />
@@ -125,7 +127,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>36417</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

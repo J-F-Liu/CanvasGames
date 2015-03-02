@@ -2,7 +2,7 @@
     ice, water, hill, trap
 }
 
-class Level extends Scene {
+class Level extends GameObjectGroup {
     tip: string;
     goal: number;
     tiles: TileGrid;
