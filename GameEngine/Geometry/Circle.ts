@@ -24,7 +24,7 @@
         }
         else if (shape instanceof Circle) {
             var circle = <Circle> shape;
-            return Vector2.distance(this.position, circle.position) < this.radius + circle.radius;
+            return Vector2.distance(this.position, circle.position) <= this.radius + circle.radius;
         }
         return false;
     }

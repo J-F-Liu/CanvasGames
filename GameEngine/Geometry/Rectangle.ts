@@ -45,14 +45,22 @@ class Rectangle implements Shape {
             point.y >= this.top && point.y <= this.bottom;
     }
 
+    intersection(rectangle: Rectangle) {
+        var left = Math.max(this.left, rectangle.left);
+        var right = Math.min(this.right, rectangle.right);
+        var top = Math.max(this.top, rectangle.top);
+        var bottom = Math.min(this.bottom, rectangle.bottom);
+        if (left <= right && top <= bottom) {
+            return new Rectangle(left, top, right - left, bottom - top);
+        } else {
+            return null;
+        }
+    }
+
     hasIntersect(shape: Shape): boolean {
         if (shape instanceof Rectangle) {
-            var rectangle = <Rectangle> shape;
-            var left = Math.max(this.left, rectangle.left);
-            var right = Math.min(this.right, rectangle.right);
-            var top = Math.max(this.top, rectangle.top);
-            var bottom = Math.min(this.bottom, rectangle.bottom);
-            return left < right && top < bottom;
+            var rect = <Rectangle> shape;
+            return this.left <= rect.right && this.right >= rect.left && this.top <= rect.bottom && this.bottom >= rect.top;
         }
         else if (shape instanceof Circle) {
             var circle = <Circle> shape;

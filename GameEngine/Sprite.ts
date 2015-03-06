@@ -11,15 +11,23 @@
     }
 
     isInside(region: Rectangle): boolean {
-        return region.contains(this.position);
+        return this.left >= region.left && this.top >= region.top && this.right <= region.right && this.bottom <= region.bottom;
     }
 
     isOutside(region: Rectangle): boolean {
-        return !region.contains(this.position);
+        return this.left >= region.right || this.top >= region.bottom || this.right <= region.left || this.bottom <= region.top;
     }
 
     collideWith(sprite: Sprite): boolean {
         return this.visible && sprite.visible && this.bound.hasIntersect(sprite.bound);
+    }
+
+    moveTo(speed: number, destination: Vector2) {
+        var direction = Vector2.minus(destination, this.position);
+        this.velocity = Physics.move(speed, direction);
+        var time = direction.length / speed;
+        var self = this;
+        window.setTimeout(function () { self.velocity = Vector2.zero; }, time * 1000);
     }
 }
 

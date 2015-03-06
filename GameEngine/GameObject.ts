@@ -64,6 +64,14 @@ class StaticImage extends GameObject {
         this.position.x = region.left + (region.width - this.width) / 2;
         this.position.y = region.top + (region.height - this.height) / 2;
     }
+    centerHorizontally(region: Rectangle, y: number) {
+        this.position.x = region.left + (region.width - this.width) / 2;
+        this.position.y = y;
+    }
+    centerVertically(region: Rectangle, x: number) {
+        this.position.x = x;
+        this.position.y = region.top + (region.height - this.height) / 2;
+    }
 
     draw(renderer: Renderer) {
         if (this.visible) {

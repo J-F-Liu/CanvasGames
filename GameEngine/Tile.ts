@@ -11,6 +11,19 @@
         return Vector2.plus(this.grid.position, position);
     }
 
+    get width() {
+        return this.grid.cellWidth;
+    }
+
+    get height() {
+        return this.grid.cellHeight;
+    }
+
+    get region() {
+        var pos = this.position;
+        return new Rectangle(pos.x, pos.y, this.grid.cellWidth, this.grid.cellHeight);
+    }
+
     get east() {
         return this.grid.at(this.rowIndex, this.colIndex + 1);
     }

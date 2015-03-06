@@ -18,7 +18,7 @@
     update(frameSpan: number) {
         if (this.visible) {
             this.age += frameSpan;
-            if (this.age > this.life) {
+            if (this.life > 0 && this.age > this.life) {
                 this.visible = false;
                 if (this.onDie != null) {
                     this.onDie();

@@ -7,6 +7,7 @@
     static audios: { [name: string]: HTMLAudioElement } = {};
     static assetsCount: number = 0;
     static assetsLoadingCount: number = 0;
+    static totalTime: number = 0;
     static prevTimestamp: number;
     static createScenes: () => any;
 
@@ -82,12 +83,16 @@
         }
         var frameSpan = (timestamp - Game.prevTimestamp) / 1000;
         Game.prevTimestamp = timestamp;
+        // drops frames of long spans when browser tab is inactive
+        if (frameSpan <= 0.5) {
+            Game.totalTime += frameSpan;
 
-        Game.scenes.currentScene.update(frameSpan);
-        Game.scenes.currentScene.draw(Game.renderer);
+            Game.scenes.currentScene.update(frameSpan);
+            Game.scenes.currentScene.draw(Game.renderer);
 
-        Mouse.reset();
-        Keyboard.reset();
+            Mouse.reset();
+            Keyboard.reset();
+        }
         requestAnimationFrame(Game.mainLoop);
     }
 

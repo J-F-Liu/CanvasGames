@@ -8,14 +8,9 @@
     }
 
     draw(renderer: Renderer) {
-        renderer.drawText(
-            this.text,
-            this.position,
-            this.origin,
-            this.color,
-            "left",
-            this.fontname,
-            this.fontsize);
+        if (this.visible) {
+            renderer.drawText(this.text, this.position, this.origin, this.color, "left", this.fontname, this.fontsize);
+        }
     }
 
     get width() {
