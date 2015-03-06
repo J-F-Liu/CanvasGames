@@ -12,6 +12,8 @@
         var data = window.localStorage.getItem(settings.storageKey);
         if (data != null) {
             settings.update(JSON.parse(data));
+        } else {
+            settings.save();
         }
         return settings;
     }

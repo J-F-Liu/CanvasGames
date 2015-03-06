@@ -82,7 +82,7 @@ class Scenes {
     title = new Scene(this.sprites.background_title, this.sprites.button_play, this.sprites.button_help);
     help = new Scene(this.sprites.background_help, this.sprites.button_back);
     levelselect = new Scene(this.sprites.levelselect, this.sprites.button_back);
-    playing = new Scene(this.sprites.background_sky, null, this.sprites.button_quit, GameWorld.timer, GameWorld.player, this.sprites.overlay_welldone, this.sprites.overlay_gameover);
+    playing = new Scene(this.sprites.background_sky, null, this.sprites.button_quit, GameWorld.player.timer, GameWorld.player, this.sprites.overlay_welldone, this.sprites.overlay_gameover);
 
     constructor(public sprites: Sprites) {
         for (var i = 0; i < GameData.levels.length; i++) {
@@ -112,7 +112,6 @@ class GameWorld {
     static scenes: Scenes;
     static currentLevel: Level;
     static player: Player;
-    static timer: Timer;
     static options = GameSettings.load(GameOptions);
     static scores = GameSettings.load(ScoreSheet);
     static get score(): number {
@@ -138,7 +137,6 @@ class GameWorld {
         Game.start(function () {
             GameWorld.sprites = new Sprites();
             GameWorld.player = new Player();
-            GameWorld.timer = new Timer();
             GameWorld.scenes = new Scenes(GameWorld.sprites);
             Game.scenes.add(GameWorld.scenes.title);
             Game.scenes.add(GameWorld.scenes.levelselect);
@@ -154,7 +152,6 @@ class GameWorld {
         GameWorld.scenes.playing.objects[1] = level;
         GameWorld.currentLevel = level;
         GameWorld.player.reset();
-        GameWorld.timer.reset();
         GameWorld.sprites.overlay_welldone.visible = false;
         GameWorld.sprites.overlay_gameover.visible = false;
         Game.scenes.switchTo(GameWorld.scenes.playing.id);

@@ -3,7 +3,7 @@
     volume: number = 1;
 
     get storageKey() {
-        return "options";
+        return "PenguinPairsOptions";
     }
 
     update(options: any) {

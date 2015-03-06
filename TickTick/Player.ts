@@ -8,6 +8,7 @@
     walkingOnHot: boolean = false;
     radius: number = 44;
     highestPos: number;
+    timer: Timer;
     constructor() {
         super({
             "idle": new Animation(Game.images['idle'], 1, 1),
@@ -18,6 +19,7 @@
             "die": new Animation(Game.images['die@5'], 1, 5),
         }, "idle");
         this.origin = new Vector2(60, this.image.height - this.radius);
+        this.timer = new Timer();
     }
 
     reset() {
@@ -26,6 +28,7 @@
         this.exploded = false;
         this.onGround = true;
         this.velocity = Vector2.zero;
+        this.timer.reset();
     }
 
     get left(): number {
@@ -96,30 +99,33 @@
         Sound.Play(Game.audios['player_jump'], GameWorld.options.volume);
     }
 
-    fall() {
+    over() {
         this.alive = false;
-        Sound.Play(Game.audios['player_fall'], GameWorld.options.volume);
+        this.timer.running = false;
         GameWorld.sprites.overlay_gameover.visible = true;
+    }
+
+    fall() {
+        this.over();
+        Sound.Play(Game.audios['player_fall'], GameWorld.options.volume);
     }
 
     die() {
         if (this.alive && !this.win) {
-            this.alive = false;
+            this.over();
             this.animation = "die";
             this.velocity.y = -900;
             Sound.Play(Game.audios['player_die'], GameWorld.options.volume);
-            GameWorld.sprites.overlay_gameover.visible = true;
         }
     }
 
     explode() {
         if (this.alive && !this.win) {
-            this.alive = false;
+            this.over();
             this.exploded = true;
             this.velocity = Vector2.zero;
             this.animation = "explode";
             Sound.Play(Game.audios['player_explode'], GameWorld.options.volume);
-            GameWorld.sprites.overlay_gameover.visible = true;
         }
     }
 
@@ -291,6 +297,7 @@
         if (GameWorld.currentLevel.finished) {
             if (this.bound.hasIntersect(tile.region)) {
                 this.win = true;
+                this.timer.running = false;
                 this.animation = "celebrate";
                 this.moveTo(this.speed, new Vector2(tile.region.center.x, tile.region.bottom - this.radius - 26));
                 Sound.Play(Game.audios['player_won'], GameWorld.options.volume);
