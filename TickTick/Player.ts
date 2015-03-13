@@ -86,6 +86,7 @@
                 } else {
                     this.velocity.add(Physics.gravity(3300, frameSpan));
                     this.handleCollisions();
+                    this.checkFinish(GameWorld.sprites.goal.region);
                 }
             }
         } else if (!this.exploded) {
@@ -250,9 +251,6 @@
                 case TileType.wall_hot:
                 case TileType.wall_ice:
                     return this.region.hasIntersect(tile.region);
-                case TileType.exit:
-                    this.checkFinish(tile);
-                    return false;
                 default:
                     return false;
             }
@@ -267,9 +265,6 @@
                 case TileType.wall_hot:
                 case TileType.wall_ice:
                     return this.region.hasIntersect(tile.region);
-                case TileType.exit:
-                    this.checkFinish(tile);
-                    return false;
             }
         }
         return false;
@@ -285,21 +280,18 @@
                 case TileType.wall_hot:
                 case TileType.wall_ice:
                     return this.region.hasIntersect(tile.region);
-                case TileType.exit:
-                    this.checkFinish(tile);
-                    return false;
             }
         }
         return false;
     }
 
-    checkFinish(tile: Tile) {
+    checkFinish(gaolRegion:Rectangle) {
         if (GameWorld.currentLevel.finished) {
-            if (this.bound.hasIntersect(tile.region)) {
+            if (this.onGround && this.bound.hasIntersect(gaolRegion)) {
                 this.win = true;
                 this.timer.running = false;
                 this.animation = "celebrate";
-                this.moveTo(this.speed, new Vector2(tile.region.center.x, tile.region.bottom - this.radius - 26));
+                this.moveTo(this.speed, new Vector2(gaolRegion.center.x, gaolRegion.bottom - this.radius - 26));
                 Sound.Play(Game.audios['player_won'], GameWorld.options.volume);
                 GameWorld.sprites.overlay_welldone.visible = true;
                 var score = GameWorld.currentLevel.levelIndex + 1;

@@ -122,7 +122,7 @@ class GameWorld {
         Game.init(1440, 825);
 
         Game.loadImages("image/",
-            "buttons_player@3.png", "button_back.png", "button_help.png", "button_play.png", "button_quit.png",
+            "button_back.png", "button_help.png", "button_play.png", "button_quit.png",
             "celebrate@14.png", "cloud_1.png", "cloud_2.png", "cloud_3.png", "cloud_4.png", "cloud_5.png", "die@5.png",
             "electrocute@6x5.png", "explode@5x5.png", "flame@9.png", "frame_hint.png",
             "gameover_click.png", "goal.png", "help.jpg", "idle.png", "jump@14.png",
