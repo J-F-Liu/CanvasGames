@@ -90,7 +90,7 @@ class Scenes {
             this.levelselect.add(level_button);
             GameWorld.sprites.levelButtons.push(level_button);
         }
-        this.levelselect.onStart = this.updateLevelButtons;
+        this.levelselect.onEnter = this.updateLevelButtons;
     }
 
     updateLevelButtons() {

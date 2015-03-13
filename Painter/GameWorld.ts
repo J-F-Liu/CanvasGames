@@ -29,9 +29,6 @@ class Sprites {
             this.plusTen, this.minusTen,
             this.lives, this.score, this.gameover
             );
-        playing.onStart = function () {
-            Sound.Play(Game.audios['music'], 0.3, true);
-        };
         return playing;
     }
 }
@@ -59,6 +56,7 @@ class GameWorld {
             var playing = GameWorld.sprites.createPlayingScene();
             Game.scenes.add(playing);
             Game.scenes.switchTo(playing.id);
+            Sound.Play(Game.audios['music'], 0.3, true);
         });
     }
 

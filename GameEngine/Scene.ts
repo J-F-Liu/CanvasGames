@@ -1,6 +1,7 @@
 ﻿class Scene extends GameObjectGroup {
     id: number;
-    onStart: () => void = null;
+    onEnter: () => void = null;
+    onLeave: () => void = null;
 }
 
 class SceneManager {
@@ -24,11 +25,14 @@ class SceneManager {
 
     switchTo(id: number) {
         if (this.currentScene != null) {
+            if (this.currentScene.onLeave != null) {
+                this.currentScene.onLeave();
+            }
             this.history.push(this.currentScene.id);
         }
         this.currentScene = this.scenes[id];
-        if (this.currentScene.onStart != null) {
-            this.currentScene.onStart();
+        if (this.currentScene.onEnter != null) {
+            this.currentScene.onEnter();
         }
     }
 
@@ -36,8 +40,8 @@ class SceneManager {
         if (this.history.length > 0) {
             var id = this.history.pop();
             this.currentScene = this.scenes[id];
-            if (this.currentScene.onStart != null) {
-                this.currentScene.onStart();
+            if (this.currentScene.onEnter != null) {
+                this.currentScene.onEnter();
             }
         }
     }

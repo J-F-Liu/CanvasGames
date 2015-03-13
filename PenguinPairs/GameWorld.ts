@@ -53,9 +53,6 @@ class Sprites {
             Game.scenes.switchTo(GameWorld.scenes.help.id);
         }
         this.button_back.click = function () {
-            if (Game.scenes.currentScene.id == GameWorld.scenes.options.id) {
-                GameWorld.options.save();
-            }
             Game.scenes.switchTo(GameWorld.scenes.title.id);
         }
 
@@ -117,7 +114,8 @@ class Scenes {
             this.levelselect.add(level_button);
             GameWorld.sprites.levelButtons.push(level_button);
         }
-        this.levelselect.onStart = this.updateLevelButtons;
+        this.levelselect.onEnter = this.updateLevelButtons;
+        this.options.onLeave = () => { GameWorld.options.save(); };
     }
 
     updateLevelButtons() {
