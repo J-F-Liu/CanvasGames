@@ -18,7 +18,6 @@
             if (!Game.audios['music'].paused) {
                 Game.audios['music'].pause();
             }
-            document.body.style.cursor = "default";
             super.update(frameSpan);
             if (Keyboard.pressed(Keys.enter) || this.playagain.pressed) {
                 GameWorld.reset();

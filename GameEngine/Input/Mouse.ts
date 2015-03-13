@@ -3,6 +3,7 @@
     static left: ButtonState = new ButtonState();
     static middle: ButtonState = new ButtonState();
     static right: ButtonState = new ButtonState();
+    static cursor: string = "default";
 
     static init() {
         document.onmousemove = Mouse.handleMouseMove;
@@ -49,6 +50,10 @@
         Mouse.left.reset();
         Mouse.middle.reset();
         Mouse.right.reset();
+        if (document.body.style.cursor != Mouse.cursor) {
+            document.body.style.cursor = Mouse.cursor;
+        }
+        Mouse.cursor = "default";
     }
 
     static pressed(region: Shape): boolean {

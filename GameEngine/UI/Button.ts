@@ -8,7 +8,7 @@
     update(frameSpan: number) {
         this.pressed = false;
         if (this.visible && Mouse.hover(this.bound)) {
-            document.body.style.cursor = "pointer";
+            Mouse.cursor = "pointer";
             if (Mouse.left.pressed) {
                 this.pressed = true;
                 if (this.click != null) {
