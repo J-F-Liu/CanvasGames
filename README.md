@@ -1,6 +1,6 @@
 # CanvasGames
 
-A web page game engine implemented in TypeScript.
+A web page 2D game engine developed in TypeScript.
 
 ## How to build
 

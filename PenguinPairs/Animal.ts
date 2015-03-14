@@ -27,8 +27,12 @@
             return;
         }
         super.update(frameSpan);
+        var mouseOver = this.controllable && this.velocity.isZero && Mouse.hover(this.bound);
+        if (mouseOver) {
+            Mouse.cursor = "pointer";
+        }
         if (Mouse.left.pressed) {
-            this.selected = this.controllable && this.velocity.isZero && this.bound.contains(Mouse.position);
+            this.selected = mouseOver && !this.selected;
         }
         if (!this.velocity.isZero) {
             var position = this.position.copy();

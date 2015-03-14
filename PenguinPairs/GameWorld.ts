@@ -74,8 +74,6 @@ class Sprites {
             GameWorld.options.volume = value;
         }
 
-        // level select
-
         // level play
         this.button_hint.position.set(916, 20);
         this.button_retry.position.set(916, 20);
@@ -152,7 +150,6 @@ class GameWorld {
             "field@2.png", "frame_goal.jpg", "help.jpg", "level_finished_click.png", "level_finished_tap.png", "level_solved@6.png", "level_unsolved.png",
             "lock.png", "penguin@8.png", "penguin_boxed@8.png", "penguin_pairs@8.png", "shark.png", "slider_bar.jpg", "slider_button.jpg", "wall.png"
             );
-
 
         Game.loadAudios("audio/", "eat", "lost", "music", "pair", "won");
 
