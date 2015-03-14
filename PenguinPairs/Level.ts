@@ -140,7 +140,7 @@ class Level extends GameObjectGroup {
             case 'p':
             case 'y':
             case 'm':
-                return new Penguin(char.toLowerCase(), false);
+                return new Penguin(char, false);
             case 'R':
             case 'B':
             case 'G':

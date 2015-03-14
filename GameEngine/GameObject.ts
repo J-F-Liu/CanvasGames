@@ -13,6 +13,18 @@
 
     reset() {
     }
+
+    hide() {
+        this.visible = false;
+    }
+
+    show() {
+        this.visible = true;
+    }
+
+    toggleVisibility() {
+        this.visible = !this.visible;
+    }
 }
 
 class StaticImage extends GameObject {

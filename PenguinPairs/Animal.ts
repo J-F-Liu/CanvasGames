@@ -90,10 +90,6 @@
         Sound.Play(Game.audios['lost'], GameWorld.options.volume);
     }
 
-    hide() {
-        this.visible = false;
-    }
-
     stopBefore(tile: Tile) {
         var stayTile = tile.neighbour(Directions.opposite(this.direction));
         this.stopAt(stayTile);
