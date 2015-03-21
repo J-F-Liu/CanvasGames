@@ -1,14 +1,15 @@
 ﻿class Animation extends SpriteSheet {
     time: number = 0;
     constructor(
-        public image: HTMLImageElement,
-        public rows: number,
-        public cols: number,
+        image: HTMLImageElement,
+        rows: number,
+        cols: number,
+        imageRect: Rectangle = null,
         public looping: boolean = false,
         public frameTime: number = 0.1,
         public startIndex: number = 0,
         public endIndex: number = rows * cols - 1) {
-        super(image, rows, cols, startIndex);
+        super(image, rows, cols, startIndex, imageRect);
     }
 
     get ended() {

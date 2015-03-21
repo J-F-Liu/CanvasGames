@@ -72,6 +72,7 @@
                 percent + "%", Game.viewport.center, Vector2.zero, Color.black, "top", "Courier New", "48px");
             requestAnimationFrame(Game.assetLoadingLoop);
         } else {
+            Game.renderer.clear();
             Game.createScenes();
             requestAnimationFrame(Game.mainLoop);
         }

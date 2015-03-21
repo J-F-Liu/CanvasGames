@@ -8,6 +8,10 @@
         this.animation = defaultAnimation;
     }
 
+    static Create(animation: Animation) {
+        return new AnimatedSprite({ "default": animation }, "default");
+    }
+
     get animation() {
         return this._animation;
     }

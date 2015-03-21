@@ -1,7 +1,7 @@
 ﻿class SpriteImage {
     imageRect: Rectangle;
-    constructor(public image: HTMLImageElement) {
-        this.imageRect = new Rectangle(0, 0, image.width, image.height);
+    constructor(public image: HTMLImageElement, imageRect: Rectangle = null) {
+        this.imageRect = imageRect == null ? new Rectangle(0, 0, image.width, image.height) : imageRect;
     }
 
     get size(): Vector2 {

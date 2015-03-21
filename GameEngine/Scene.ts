@@ -9,10 +9,11 @@ class SceneManager {
     private history: number[] = [];
     currentScene: Scene;
 
-    add(scene: Scene): number {
-        this.scenes.push(scene);
-        scene.id = this.scenes.length - 1;
-        return scene.id;
+    add(...scenes: Scene[]) {
+        for (var i = 0; i < scenes.length; i++) {
+            this.scenes.push(scenes[i]);
+            scenes[i].id = this.scenes.length - 1;
+        }
     }
 
     get(id: number): Scene {

@@ -5,7 +5,7 @@ class Rocket extends Enemy {
     spawnTime: number;
     constructor(public startPosition: Vector2, public direction: Direction) {
         super({
-            "default": new Animation(Game.images['rocket@3'], 1, 3, true)
+            "default": new Animation(Game.images['rocket@3'], 1, 3, null, true)
         }, "default");
         this.mirror = direction == Direction.left;
         this.origin = new Vector2(this.width / 2, this.height);
@@ -42,7 +42,7 @@ class Turtle extends Enemy {
     sneezing: boolean;
     constructor(startPosition: Vector2) {
         super({
-            "sneeze": new Animation(Game.images['sneeze@9'], 1, 9, false),
+            "sneeze": new Animation(Game.images['sneeze@9'], 1, 9, null, false),
             "idle": new Animation(Game.images['turtle_idle'], 1, 1)
         }, "idle");
         this.origin = new Vector2(this.image.width / 2, this.image.height - 25);
@@ -99,7 +99,7 @@ class Sparky extends Enemy {
     electrocute: boolean;
     constructor(public startPosition: Vector2) {
         super({
-            "electrocute": new Animation(Game.images['electrocute@6x5'], 5, 6, false),
+            "electrocute": new Animation(Game.images['electrocute@6x5'], 5, 6, null, false),
             "idle": new Animation(Game.images['sparky_idle'], 1, 1)
         }, "idle");
         this.origin = new Vector2(this.image.width / 2, this.image.height - 100);
@@ -167,7 +167,7 @@ class Flame extends Enemy {
     waitTime: number = 0;
     constructor(public startPosition: Vector2, public patrolType: PatrolType) {
         super({
-            "default": new Animation(Game.images['flame@9'], 1, 9, true)
+            "default": new Animation(Game.images['flame@9'], 1, 9, null, true)
         }, "default");
         this.origin = new Vector2(this.image.width / 2, this.image.height);
         this.position = startPosition;

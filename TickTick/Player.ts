@@ -12,10 +12,10 @@
     constructor() {
         super({
             "idle": new Animation(Game.images['idle'], 1, 1),
-            "run": new Animation(Game.images['run@13'], 1, 13, true, 0.05),
-            "jump": new Animation(Game.images['jump@14'], 1, 14, false, 0.05),
-            "celebrate": new Animation(Game.images['celebrate@14'], 1, 14, false, 0.05),
-            "explode": new Animation(Game.images['explode@5x5'], 5, 5, false, 0.04),
+            "run": new Animation(Game.images['run@13'], 1, 13, null, true, 0.05),
+            "jump": new Animation(Game.images['jump@14'], 1, 14, null, false, 0.05),
+            "celebrate": new Animation(Game.images['celebrate@14'], 1, 14, null, false, 0.05),
+            "explode": new Animation(Game.images['explode@5x5'], 5, 5, null, false, 0.04),
             "die": new Animation(Game.images['die@5'], 1, 5),
         }, "idle");
         this.origin = new Vector2(60, this.image.height - this.radius);
