@@ -47,7 +47,7 @@
         for (var i = 0; i < this.tiles.length; i++) {
             var tile = this.tiles[i];
             if (tile.image != null) {
-                tile.image.draw(tile.position, 0, 1, this.origin, false, renderer);
+                tile.image.draw(Vector2.minus(tile.position, Game.viewport.position), 0, 1, this.origin, tile.mirror, renderer);
             }
         }
     }

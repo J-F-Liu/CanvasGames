@@ -46,7 +46,7 @@ class Canvas2D implements Renderer {
             this.context.rotate(rotation);
             this.context.drawImage(image, sourceRect.x, sourceRect.y,
                 sourceRect.width, sourceRect.height,
-                sourceRect.width - origin.x, -origin.y,
+                origin.x, -origin.y,
                 sourceRect.width * scale, sourceRect.height * scale);
         }
         else {

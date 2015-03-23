@@ -31,6 +31,7 @@ class StaticImage extends GameObject {
     rotation: number = 0;
     scale: number = 1;
     mirror: boolean = false;
+    fixed: boolean = false;
 
     constructor(public image: SpriteImage) {
         super();
@@ -87,7 +88,9 @@ class StaticImage extends GameObject {
 
     draw(renderer: Renderer) {
         if (this.visible) {
-            this.image.draw(this.position, this.rotation, this.scale, this.origin, this.mirror, renderer);
+            this.image.draw(
+                this.fixed ? this.position : Vector2.minus(this.position, Game.viewport.position),
+                this.rotation, this.scale, this.origin, this.mirror, renderer);
         }
     }
 }

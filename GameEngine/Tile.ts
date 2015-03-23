@@ -3,7 +3,7 @@
     colIndex: number;
     grid: TileGrid;
 
-    constructor(public type: number, public image: SpriteImage = null) {
+    constructor(public type: number, public image: SpriteImage = null, public mirror: boolean = false) {
     }
 
     get position() {
