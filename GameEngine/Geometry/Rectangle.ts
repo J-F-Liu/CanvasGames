@@ -40,6 +40,10 @@ class Rectangle implements Shape {
         return new Vector2(this.left + this.width / 2, this.top + this.height / 2);
     }
 
+    toString() {
+        return "[left=" + this.left + ", right=" + this.right + ", top=" + this.top + ", bottom=" + this.bottom + "]";
+    }
+
     contains(point: Vector2): boolean {
         return point.x >= this.left && point.x <= this.right &&
             point.y >= this.top && point.y <= this.bottom;

@@ -11,14 +11,14 @@
     }
 
     scrollLeft(dx: number) {
-        this.viewport.x -= Math.round(dx);
+        this.viewport.x -= dx;
         if (this.viewport.x < 0) {
             this.viewport.x = 0;
         }
     }
 
     scrollRight(dx: number) {
-        this.viewport.x += Math.round(dx);
+        this.viewport.x += dx;
         if (this.viewport.x > this.width - this.viewport.width) {
             this.viewport.x = this.width - this.viewport.width;
         }

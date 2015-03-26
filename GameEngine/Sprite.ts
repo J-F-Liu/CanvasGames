@@ -7,7 +7,7 @@
 
     update(frameSpan: number) {
         var displacement = Vector2.times(frameSpan, this.velocity);
-        this.position.add(displacement);
+        this.position.add(displacement.round());
     }
 
     isInside(region: Rectangle): boolean {

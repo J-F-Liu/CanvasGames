@@ -23,6 +23,14 @@
         }
     }
 
+    round() {
+        return new Vector2(Math.round(this.x), Math.round(this.y));
+    }
+
+    toString() {
+        return "(" + this.x + ", " + this.y + ")";
+    }
+
     set(x: number, y: number) {
         this.x = x;
         this.y = y;
