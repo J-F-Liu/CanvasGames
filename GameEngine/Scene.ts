@@ -2,12 +2,18 @@
     id: number;
     onEnter: () => void = null;
     onLeave: () => void = null;
+
+    constructor(...objects: GameObject[]) {
+        super();
+        this.objects = objects;
+        Game.scenes.add(this);
+    }
 }
 
 class SceneManager {
     private scenes: Scene[] = [];
     private history: number[] = [];
-    currentScene: Scene;
+    currentScene: Scene = null;
 
     add(...scenes: Scene[]) {
         for (var i = 0; i < scenes.length; i++) {

@@ -138,10 +138,6 @@ class GameWorld {
             GameWorld.sprites = new Sprites();
             GameWorld.player = new Player();
             GameWorld.scenes = new Scenes(GameWorld.sprites);
-            Game.scenes.add(GameWorld.scenes.title);
-            Game.scenes.add(GameWorld.scenes.levelselect);
-            Game.scenes.add(GameWorld.scenes.help);
-            Game.scenes.add(GameWorld.scenes.playing);
             Game.scenes.switchTo(GameWorld.scenes.title.id);
             Sound.Play(Game.audios['music'], GameWorld.options.volume * 0.5, true);
         });

@@ -47,8 +47,16 @@
 
     static CreateFpsLabel() {
         var fpsLabel = new Label("FPS", Color.black);
+        var counter = 0;
+        var time = 0;
         fpsLabel.update = function (frameSpan) {
-            this.text = Math.round(1 / frameSpan).toString();
+            counter++;
+            time += frameSpan;
+            if (counter == 10) {
+                this.text = Math.round(counter / time).toString();
+                counter = 0;
+                time = 0;
+            }
         };
         return fpsLabel;
     }
