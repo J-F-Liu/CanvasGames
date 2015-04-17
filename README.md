@@ -77,7 +77,6 @@ class GameWorld {
         Game.start(function () {
             GameWorld.sprites = new Sprites();
             var playing = GameWorld.sprites.createPlayingScene();
-            Game.scenes.add(playing);
             Game.scenes.switchTo(playing.id);
             Sound.Play(Game.audios['music'], 0.3, true);
         });

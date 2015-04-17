@@ -12,6 +12,10 @@
         return this.cellHeight * this.rows;
     }
 
+    get region(): Rectangle {
+        return new Rectangle(this.position.x, this.position.y, this.width, this.height);
+    }
+
     add(tile: Tile) {
         tile.grid = this;
         tile.rowIndex = Math.floor(this.tiles.length / this.cols);

@@ -291,7 +291,7 @@
                 this.win = true;
                 this.timer.running = false;
                 this.animation = "celebrate";
-                this.moveTo(this.speed, new Vector2(gaolRegion.center.x, gaolRegion.bottom - this.radius - 26));
+                this.moveTo(new Vector2(gaolRegion.center.x, gaolRegion.bottom - this.radius - 26), this.speed);
                 Sound.Play(Game.audios['player_won'], GameWorld.options.volume);
                 GameWorld.sprites.overlay_welldone.visible = true;
                 var score = GameWorld.currentLevel.levelIndex + 1;
