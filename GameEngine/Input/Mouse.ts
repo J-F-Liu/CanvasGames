@@ -47,9 +47,6 @@
     }
 
     static reset() {
-        Mouse.left.reset();
-        Mouse.middle.reset();
-        Mouse.right.reset();
         if (document.body.style.cursor != Mouse.cursor) {
             document.body.style.cursor = Mouse.cursor;
         }

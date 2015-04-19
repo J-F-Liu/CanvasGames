@@ -25,9 +25,7 @@
         return Keyboard.keyStates[key].pressed;
     }
 
-    static reset() {
-        for (var i = 0; i < 256; ++i) {
-            Keyboard.keyStates[i].reset();
-        }
+    static reset(key: number) {
+        return Keyboard.keyStates[key].reset();
     }
 } 
