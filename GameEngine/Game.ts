@@ -92,6 +92,7 @@
             Game.scenes.currentScene.draw(Game.renderer);
 
             Mouse.reset();
+            Keyboard.reset();
         }
         requestAnimationFrame(Game.mainLoop);
     }
