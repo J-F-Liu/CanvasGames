@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "declaration": true,
+    "removeComments": true,
+    "preserveConstEnums": false,
+    "out": "release/PengiunPairs/GameWorld.js",
+    "sourceMap": true
+  },
+  "files": [
+    "../release/GameEngine.d.ts",
+    "Animal.ts",
+    "Arrow.ts",
+    "Level.ts",
+    "LevelButton.ts",
+    "PairList.ts",
+    "ScoreSheet.ts",
+    "GameData.ts",
+    "GameOptions.ts",
+    "GameWorld.ts"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "declaration": true,
+    "removeComments": true,
+    "preserveConstEnums": false,
+    "out": "release/TickTick/GameWorld.js",
+    "sourceMap": true
+  },
+  "files": [
+    "../release/GameEngine.d.ts",
+    "Player.ts",
+    "Enemy.ts",
+    "WaterDrop.ts",
+    "Timer.ts",
+    "Level.ts",
+    "LevelButton.ts",
+    "ScoreSheet.ts",
+    "GameData.ts",
+    "GameOptions.ts",
+    "GameWorld.ts"
+  ]
+}

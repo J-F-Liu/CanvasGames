@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "declaration": true,
+    "removeComments": true,
+    "preserveConstEnums": false,
+    "out": "release/Painter/GameWorld.js",
+    "sourceMap": true
+  },
+  "files": [
+    "../release/GameEngine.d.ts",
+    "Cannon.ts",
+    "Ball.ts",
+    "PaintCan.ts",
+    "Lives.ts",
+    "Score.ts",
+    "ScoreSheet.ts",
+    "GameOver.ts",
+    "GameWorld.ts"
+  ]
+}

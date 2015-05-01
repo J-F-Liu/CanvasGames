@@ -1,0 +1,43 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "declaration": true,
+    "removeComments": true,
+    "preserveConstEnums": false,
+    "out": "release/GameEngine.js",
+    "sourceMap": true
+  },
+  "files": [
+    "Maths.ts",
+    "Geometry/Vector2.ts",
+    "Geometry/Rectangle",
+    "Geometry/Circle",
+    "System/Color",
+    "System/Keys",
+    "System/Direction",
+    "Input/ButtonState.ts",
+    "Input/Mouse",
+    "Input/Keyboard",
+    "Canvas2D.ts",
+    "SpriteImage.ts",
+    "SpriteSheet.ts",
+    "Animation.ts",
+    "GameMap.ts",
+    "GameObject.ts",
+    "GameObjectGroup.ts",
+    "Sprite.ts",
+    "Particle.ts",
+    "ParticleSource.ts",
+    "AnimatedSprite.ts",
+    "Tile.ts",
+    "TileGrid.ts",
+    "Scene.ts",
+    "Sound.ts",
+    "UI/Label.ts",
+    "UI/Button.ts",
+    "UI/Slider.ts",
+    "Physics.ts",
+    "Game.ts",
+    "GameSettings.ts"
+  ]
+}

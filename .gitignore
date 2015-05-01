@@ -13,5 +13,6 @@
 
 # Build output directory
 out/
+release/
 
 !LAB.min.js
