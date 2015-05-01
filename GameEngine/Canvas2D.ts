@@ -11,7 +11,7 @@ class Canvas2D implements Renderer {
 
     constructor(canvas: HTMLCanvasElement) {
         this.canvas = canvas;
-        this.context = canvas.getContext('2d');
+        this.context = <CanvasRenderingContext2D>canvas.getContext('2d');
         window.onresize = this.resize;
         this.resize();
     }

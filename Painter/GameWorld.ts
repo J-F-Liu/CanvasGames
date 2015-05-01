@@ -20,7 +20,8 @@ class Sprites {
     score = new Score(Game.images['scorebar']);
     gameover = new GameOver(
         new StaticImage(new SpriteImage(Game.images['gameover'])),
-        new Button(new SpriteImage(Game.images['play_again'])));
+        new Button(new SpriteImage(Game.images['play_again'])),
+        new Button(new SpriteImage(Game.images['more_games'])));
 
     createPlayingScene() {
         var playing = new Scene(
@@ -47,7 +48,7 @@ class GameWorld {
             "cannon_barrel.png", "cannon_red.png", "cannon_green.png", "cannon_blue.png",
             "ball_red.png", "ball_green.png", "ball_blue.png",
             "can_red.png", "can_green.png", "can_blue.png", "plus_ten.png", "minus_ten.png",
-            "lives.png", "gameover.png", "play_again.png");
+            "lives.png", "gameover.png", "play_again.png", "more_games.png");
 
         Game.loadAudios("audio/", "music", "collect_points", "lose_points", "shoot_paint", "bubble_burst");
 
