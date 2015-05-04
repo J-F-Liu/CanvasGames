@@ -50,7 +50,9 @@ class GameWorld {
             "can_red.png", "can_green.png", "can_blue.png", "plus_ten.png", "minus_ten.png",
             "lives.png", "gameover.png", "play_again.png", "more_games.png");
 
-        Game.loadAudios("audio/", "music", "collect_points", "lose_points", "shoot_paint", "bubble_burst");
+        if(Device.isPC){
+            Game.loadAudios("audio/", "music", "collect_points", "lose_points", "shoot_paint", "bubble_burst");
+        }
 
         Game.start(function () {
             GameWorld.sprites = new Sprites();

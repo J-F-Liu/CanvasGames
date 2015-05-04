@@ -150,8 +150,10 @@ class GameWorld {
             "field@2.png", "frame_goal.jpg", "help.jpg", "level_finished_click.png", "level_finished_tap.png", "level_solved@6.png", "level_unsolved.png",
             "lock.png", "penguin@8.png", "penguin_boxed@8.png", "penguin_pairs@8.png", "shark.png", "slider_bar.jpg", "slider_button.jpg", "wall.png"
             );
-
-        Game.loadAudios("audio/", "eat", "lost", "music", "pair", "won");
+            
+        if(Device.isPC){
+            Game.loadAudios("audio/", "eat", "lost", "music", "pair", "won");
+        }
 
         Game.start(function () {
             GameWorld.sprites = new Sprites();

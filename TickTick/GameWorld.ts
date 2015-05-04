@@ -131,8 +131,10 @@ class GameWorld {
             "rocket@3.png", "run@13.png", "sky.jpg", "sneeze@9.png", "sparky_idle.png", "timer.png", "title.jpg",
             "turtle_idle.png", "wall.png", "wall_hot.png", "wall_ice.png", "water.png", "welldone_click.png"
             );
-
-        Game.loadAudios("audio/", "music", "player_die", "player_explode", "player_fall", "player_jump", "player_won", "water_collected");
+            
+        if(Device.isPC){
+            Game.loadAudios("audio/", "music", "player_die", "player_explode", "player_fall", "player_jump", "player_won", "water_collected");
+        }
 
         Game.start(function () {
             GameWorld.sprites = new Sprites();
