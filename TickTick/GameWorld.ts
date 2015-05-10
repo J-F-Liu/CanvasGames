@@ -6,6 +6,7 @@ class Sprites {
     background_help = new StaticImage(new SpriteImage(Game.images['help']));
     background_sky = new StaticImage(new SpriteImage(Game.images['sky']));
     levelselect = new StaticImage(new SpriteImage(Game.images['levelselect']));
+    options = new StaticImage(new SpriteImage(Game.images['options']));
     cloud_1 = new StaticImage(new SpriteImage(Game.images['cloud_1']));
     cloud_2 = new StaticImage(new SpriteImage(Game.images['cloud_2']));
     cloud_3 = new StaticImage(new SpriteImage(Game.images['cloud_3']));
@@ -29,6 +30,11 @@ class Sprites {
     level_unsolved = new SpriteImage(Game.images['level_unsolved']);
     level_locked = new SpriteImage(Game.images['level_locked']);
 
+    enemiesButton = new ToggleButton(new SpriteSheet(Game.images['controls'], 1, 2, 0, new Rectangle(0, 0, 259, 49)), 1, 0);
+    icehotButton = new ToggleButton(new SpriteSheet(Game.images['controls'], 1, 2, 0, new Rectangle(0, 0, 259, 49)), 1, 0);
+    ticksButton = new ToggleButton(new SpriteSheet(Game.images['controls'], 1, 2, 0, new Rectangle(0, 60, 282, 33)), 1, 0);
+    musicSlider = new Slider(new SpriteImage(Game.images['controls'], new Rectangle(520, 0, 290, 30)), new SpriteImage(Game.images['controls'], new Rectangle(814, 2, 41, 24)), 5, 5, 4);
+
     platform = new SpriteImage(Game.images['platforms'], new Rectangle(0, 0, 72, 55));
     platform_hot = new SpriteImage(Game.images['platforms'], new Rectangle(72, 0, 72, 55));
     platform_ice = new SpriteImage(Game.images['platforms'], new Rectangle(144, 0, 72, 55));
@@ -47,7 +53,11 @@ class Sprites {
         this.button_play.click = function () {
             Game.scenes.switchTo(GameWorld.scenes.levelselect.id);
         };
-        this.button_help.centerHorizontally(Game.viewport, 600);
+        this.button_options.centerHorizontally(Game.viewport, 600);
+        this.button_options.click = function () {
+            Game.scenes.switchTo(GameWorld.scenes.options.id);
+        };
+        this.button_help.centerHorizontally(Game.viewport, 660);
         this.button_help.click = function () {
             Game.scenes.switchTo(GameWorld.scenes.help.id);
         };
@@ -55,6 +65,29 @@ class Sprites {
         this.button_back.click = function () {
             Game.scenes.switchTo(GameWorld.scenes.title.id);
         };
+
+        // options
+        this.enemiesButton.position.set(770, 396);
+        this.enemiesButton.on = GameWorld.options.enableEnemies;
+        this.enemiesButton.change = function (value) {
+            GameWorld.options.enableEnemies = value;
+        }
+        this.icehotButton.position.set(770, 476);
+        this.icehotButton.on = GameWorld.options.enableIceAndHot;
+        this.icehotButton.change = function (value) {
+            GameWorld.options.enableIceAndHot = value;
+        }
+        this.ticksButton.position.set(755, 562);
+        this.ticksButton.on = GameWorld.options.timerTicks == 30;
+        this.ticksButton.change = function (value) {
+            GameWorld.options.timerTicks = value ? 30 : 60;
+        }
+        this.musicSlider.position = new Vector2(748, 644);
+        this.musicSlider.value = GameWorld.options.volume;
+        this.musicSlider.change = function (value) {
+            Game.audios['music'].volume = value * 0.5;
+            GameWorld.options.volume = value;
+        }
 
         // playing
         this.background_sky.position.y = Game.viewport.height - this.background_sky.height;
@@ -80,9 +113,10 @@ class Sprites {
 }
 
 class Scenes {
-    title = new Scene(this.sprites.background_title, this.sprites.button_play, this.sprites.button_help);
+    title = new Scene(this.sprites.background_title, this.sprites.button_play, this.sprites.button_options, this.sprites.button_help);
     help = new Scene(this.sprites.background_help, this.sprites.button_back);
     levelselect = new Scene(this.sprites.levelselect, this.sprites.button_back);
+    options = new Scene(this.sprites.options, this.sprites.enemiesButton, this.sprites.icehotButton, this.sprites.ticksButton, this.sprites.musicSlider, this.sprites.button_back);
     playing = new Scene(this.sprites.background_sky, null, this.sprites.button_quit, GameWorld.player.timer, GameWorld.player, this.sprites.overlay_welldone, this.sprites.overlay_gameover);
 
     constructor(public sprites: Sprites) {
@@ -123,12 +157,12 @@ class GameWorld {
         Game.init(1440, 825);
 
         Game.loadImages("image/",
-            "buttons.png",
+            "buttons.png", "controls.png",
             "celebrate@14.png", "cloud_1.png", "cloud_2.png", "cloud_3.png", "cloud_4.png", "cloud_5.png", "die@5.png",
             "electrocute@6x5.png", "explode@5x5.png", "flame@9.png", "frame_hint.png",
             "titles.png", "goal.png", "help.jpg", "idle.png", "jump@14.png",
             "levelselect.jpg", "level_locked.png", "level_solved.png", "level_unsolved.png",
-            "mountain_1.png", "mountain_2.png", "platforms.png",
+            "mountain_1.png", "mountain_2.png", "platforms.png", "options.jpg",
             "rocket@3.png", "run@13.png", "sky.jpg", "sneeze@9.png", "sparky_idle.png", "timer.png", "title.jpg",
             "turtle_idle.png", "water.png"
             );

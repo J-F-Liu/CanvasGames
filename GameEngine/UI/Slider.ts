@@ -36,6 +36,9 @@
     }
 
     update(frameSpan: number) {
+        if (Mouse.hover(this.track.region)) {
+            Mouse.cursor = "pointer";
+        }
         if (Mouse.left.down) {
             var mousePos = Mouse.position;
             if (this.track.bound.contains(mousePos) || this.dragging) {
