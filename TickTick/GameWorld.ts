@@ -14,26 +14,27 @@ class Sprites {
     mountain_1 = new StaticImage(new SpriteImage(Game.images['mountain_1']));
     mountain_2 = new StaticImage(new SpriteImage(Game.images['mountain_2']));
 
-    overlay_gameover = new Button(new SpriteImage(Game.images['gameover_click']));
-    overlay_welldone = new Button(new SpriteImage(Game.images['welldone_click']));
+    overlay_gameover = new Button(new SpriteImage(Game.images['titles'], new Rectangle(0, 0, 660, 231)));
+    overlay_welldone = new Button(new SpriteImage(Game.images['titles'], new Rectangle(660, 0, 660, 231)));
 
     frame_hint = new StaticImage(new SpriteImage(Game.images['frame_hint']));
     timer = new StaticImage(new SpriteImage(Game.images['timer']));
 
-    button_play = new Button(new SpriteImage(Game.images['button_play']));
-    button_help = new Button(new SpriteImage(Game.images['button_help']));
-    button_back = new Button(new SpriteImage(Game.images['button_back']));
-    button_quit = new Button(new SpriteImage(Game.images['button_quit']));
+    button_back = new Button(new SpriteImage(Game.images['buttons'], new Rectangle(0, 0, 236, 54)));
+    button_help = new Button(new SpriteImage(Game.images['buttons'], new Rectangle(236, 0, 236, 54)));
+    button_play = new Button(new SpriteImage(Game.images['buttons'], new Rectangle(472, 0, 236, 54)));
+    button_options = new Button(new SpriteImage(Game.images['buttons'], new Rectangle(708, 0, 236, 54)));
+    button_quit = new Button(new SpriteImage(Game.images['buttons'], new Rectangle(944, 0, 128, 54)));
     level_solved = new SpriteImage(Game.images['level_solved']);
     level_unsolved = new SpriteImage(Game.images['level_unsolved']);
     level_locked = new SpriteImage(Game.images['level_locked']);
 
-    wall = new SpriteImage(Game.images['wall']);
-    wall_hot = new SpriteImage(Game.images['wall_hot']);
-    wall_ice = new SpriteImage(Game.images['wall_ice']);
-    platform = new SpriteImage(Game.images['platform']);
-    platform_hot = new SpriteImage(Game.images['platform_hot']);
-    platform_ice = new SpriteImage(Game.images['platform_ice']);
+    platform = new SpriteImage(Game.images['platforms'], new Rectangle(0, 0, 72, 55));
+    platform_hot = new SpriteImage(Game.images['platforms'], new Rectangle(72, 0, 72, 55));
+    platform_ice = new SpriteImage(Game.images['platforms'], new Rectangle(144, 0, 72, 55));
+    wall = new SpriteImage(Game.images['platforms'], new Rectangle(216, 0, 72, 55));
+    wall_hot = new SpriteImage(Game.images['platforms'], new Rectangle(288, 0, 72, 55));
+    wall_ice = new SpriteImage(Game.images['platforms'], new Rectangle(360, 0, 72, 55));
 
     goal = new StaticImage(new SpriteImage(Game.images['goal']));
     water = new SpriteImage(Game.images['water']);
@@ -122,14 +123,14 @@ class GameWorld {
         Game.init(1440, 825);
 
         Game.loadImages("image/",
-            "button_back.png", "button_help.png", "button_play.png", "button_quit.png",
+            "buttons.png",
             "celebrate@14.png", "cloud_1.png", "cloud_2.png", "cloud_3.png", "cloud_4.png", "cloud_5.png", "die@5.png",
             "electrocute@6x5.png", "explode@5x5.png", "flame@9.png", "frame_hint.png",
-            "gameover_click.png", "goal.png", "help.jpg", "idle.png", "jump@14.png",
+            "titles.png", "goal.png", "help.jpg", "idle.png", "jump@14.png",
             "levelselect.jpg", "level_locked.png", "level_solved.png", "level_unsolved.png",
-            "mountain_1.png", "mountain_2.png", "platform.png", "platform_hot.png", "platform_ice.png",
+            "mountain_1.png", "mountain_2.png", "platforms.png",
             "rocket@3.png", "run@13.png", "sky.jpg", "sneeze@9.png", "sparky_idle.png", "timer.png", "title.jpg",
-            "turtle_idle.png", "wall.png", "wall_hot.png", "wall_ice.png", "water.png", "welldone_click.png"
+            "turtle_idle.png", "water.png"
             );
             
         if(Device.isPC){
