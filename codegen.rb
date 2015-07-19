@@ -26,8 +26,24 @@ def gen_audio_load(game_name)
   puts ");"
 end
 
+def rotate_text_array(array)
+  result = []
+  rows = array.length
+  cols = array[0].length
+  for col in 1..cols
+    text = ""
+    for row in 0..rows-1
+      text += array[row][-col]
+    end
+    result << text
+  end
+  result
+end
+
 if ARGV.count > 0
   game_name = ARGV.first
   gen_image_load(game_name)
   gen_audio_load(game_name)
 end
+
+# puts rotate_text_array(tiles).collect(&:inspect).join(",\n")

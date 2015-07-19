@@ -11,9 +11,17 @@
         public maxIndex: number = rows * cols - 1) {
         super(image, rows, cols, startIndex, imageRect);
     }
+    
+    static Create(image: SpriteImage){
+        return new Animation(image.image, 1, 1, image.imageRect, true);
+    }
 
     get ended() {
         return !this.looping && this.sheetIndex == this.maxIndex;
+    }
+
+    get duration() {
+        return this.frameTime * (this.maxIndex + 1);
     }
 
     play() {

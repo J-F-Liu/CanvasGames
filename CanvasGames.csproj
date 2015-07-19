@@ -10,7 +10,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
-    <TypeScriptToolsVersion>1.4</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>1.5</TypeScriptToolsVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -20,8 +20,11 @@
   <ItemGroup>
     <TypeScriptCompile Include="GameEngine\AnimatedSprite.ts" />
     <TypeScriptCompile Include="GameEngine\Animation.ts" />
+    <TypeScriptCompile Include="GameEngine\Device.ts" />
     <TypeScriptCompile Include="GameEngine\GameObjectGroup.ts" />
     <TypeScriptCompile Include="GameEngine\GameSettings.ts" />
+    <TypeScriptCompile Include="GameEngine\GameMap.ts" />
+    <TypeScriptCompile Include="GameEngine\Input\TouchScreen.ts" />
     <TypeScriptCompile Include="GameEngine\Maths.ts" />
     <TypeScriptCompile Include="GameEngine\ParticleSource.ts" />
     <TypeScriptCompile Include="GameEngine\System\Direction.ts" />
@@ -48,10 +51,6 @@
     <TypeScriptCompile Include="GameEngine\TileGrid.ts" />
     <TypeScriptCompile Include="GameEngine\UI\Button.ts" />
     <TypeScriptCompile Include="GameEngine\UI\Label.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="TickTick\index.html" />
-    <Content Include="web.config" />
     <TypeScriptCompile Include="TickTick\Enemy.ts" />
     <TypeScriptCompile Include="TickTick\GameData.ts" />
     <TypeScriptCompile Include="TickTick\GameOptions.ts" />
@@ -64,8 +63,75 @@
     <TypeScriptCompile Include="TickTick\WaterDrop.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="TickTick\app.css" />
+    <Content Include="TickTick\audio\music.mp3" />
+    <Content Include="TickTick\audio\player_die.mp3" />
+    <Content Include="TickTick\audio\player_explode.mp3" />
+    <Content Include="TickTick\audio\player_fall.mp3" />
+    <Content Include="TickTick\audio\player_jump.mp3" />
+    <Content Include="TickTick\audio\player_won.mp3" />
+    <Content Include="TickTick\audio\water_collected.mp3" />
+    <Content Include="TickTick\image\buttons.png" />
+    <Content Include="TickTick\image\button_back.png" />
+    <Content Include="TickTick\image\button_help.png" />
+    <Content Include="TickTick\image\button_play.png" />
+    <Content Include="TickTick\image\button_quit.png" />
+    <Content Include="TickTick\image\celebrate%4014.png" />
+    <Content Include="TickTick\image\cloud_1.png" />
+    <Content Include="TickTick\image\cloud_2.png" />
+    <Content Include="TickTick\image\cloud_3.png" />
+    <Content Include="TickTick\image\cloud_4.png" />
+    <Content Include="TickTick\image\cloud_5.png" />
+    <Content Include="TickTick\image\controls.png" />
+    <Content Include="TickTick\image\die%405.png" />
+    <Content Include="TickTick\image\electrocute%406x5.png" />
+    <Content Include="TickTick\image\explode%405x5.png" />
+    <Content Include="TickTick\image\flame%409.png" />
+    <Content Include="TickTick\image\frame_hint.png" />
+    <Content Include="TickTick\image\gameover_click.png" />
+    <Content Include="TickTick\image\goal.png" />
+    <Content Include="TickTick\image\help.jpg" />
+    <Content Include="TickTick\image\idle.png" />
+    <Content Include="TickTick\image\jump%4014.png" />
+    <Content Include="TickTick\image\levelselect.jpg" />
+    <Content Include="TickTick\image\level_locked.png" />
+    <Content Include="TickTick\image\level_solved.png" />
+    <Content Include="TickTick\image\level_unsolved.png" />
+    <Content Include="TickTick\image\mountain_1.png" />
+    <Content Include="TickTick\image\mountain_2.png" />
+    <Content Include="TickTick\image\options.jpg" />
+    <Content Include="TickTick\image\platform.png" />
+    <Content Include="TickTick\image\platforms.png" />
+    <Content Include="TickTick\image\platform_hot.png" />
+    <Content Include="TickTick\image\platform_ice.png" />
+    <Content Include="TickTick\image\rocket%403.png" />
+    <Content Include="TickTick\image\run%4013.png" />
+    <Content Include="TickTick\image\sky.jpg" />
+    <Content Include="TickTick\image\sneeze%409.png" />
+    <Content Include="TickTick\image\sparky_idle.png" />
+    <Content Include="TickTick\image\timer.png" />
+    <Content Include="TickTick\image\title.jpg" />
+    <Content Include="TickTick\image\titles.png" />
+    <Content Include="TickTick\image\turtle_idle.png" />
+    <Content Include="TickTick\image\wall.png" />
+    <Content Include="TickTick\image\wall_hot.png" />
+    <Content Include="TickTick\image\wall_ice.png" />
+    <Content Include="TickTick\image\water.png" />
+    <Content Include="TickTick\image\welldone_click.png" />
+    <Content Include="TickTick\index.html" />
+    <Content Include="web.config" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="LAB.min.js" />
     <Content Include="build.rb" />
+    <Content Include="TickTick\audio\music.ogg" />
+    <Content Include="TickTick\audio\player_die.ogg" />
+    <Content Include="TickTick\audio\player_explode.ogg" />
+    <Content Include="TickTick\audio\player_fall.ogg" />
+    <Content Include="TickTick\audio\player_jump.ogg" />
+    <Content Include="TickTick\audio\player_won.ogg" />
+    <Content Include="TickTick\audio\water_collected.ogg" />
+    <Content Include="TickTick\tsconfig.json" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

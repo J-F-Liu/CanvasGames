@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "declaration": true,
+    "removeComments": true,
+    "preserveConstEnums": false,
+    "out": "release/Painter/GameWorld.js",
+    "sourceMap": true
+  },
+  "files": [
+    "../release/GameEngine.d.ts",
+    "Glitter.ts",
+    "Coin.ts",
+    "Pipe.ts",
+    "Quest.ts",
+    "Player.ts",
+    "Enemy.ts",
+    "Level.ts",
+    "ScoreSheet.ts",
+    "GameData.ts",
+    "GameOptions.ts",
+    "GameWorld.ts"
+  ]
+}

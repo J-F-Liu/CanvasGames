@@ -17,7 +17,7 @@
     }
 
     remove(gameObject: GameObject) {
-        for (var i = 0; i < this.objects.length; i++) {
+        for (var i = this.objects.length - 1; i >= 0; i--) {
             if (this.objects[i] == gameObject) {
                 this.objects.splice(i, 1);
                 return;

@@ -1,0 +1,2 @@
+﻿class Enemy extends AnimatedSprite {
+}
