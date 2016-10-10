@@ -1,26 +1,30 @@
 {
   "name": "CanvasGames",
-  "version": "1.0.0",
+  "version": "2.0.0",
+  "author": "Junfeng Liu",
+  "license": "MIT",
   "description": "The Engine of CanvasGames",
-  "main": "gulpfile.js",
-  "dependencies": {
-    "del": "^1.1.1",
-    "gulp": "^3.8.11",
-    "gulp-replace": "^0.5.3",
-    "gulp-typescript": "^2.6.0",
-    "merge2": "^0.3.5",
-    "minimist": "^1.1.1"
-  },
-  "devDependencies": {},
+  "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "cross-env NODE_ENV=development webpack-dev-server",
+    "build": "cross-env NODE_ENV=production webpack"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.37",
+    "lodash": "^4.16.4"
+  },
+  "devDependencies": {
+    "cross-env": "^3.1.1",
+    "ts-loader": "^0.8.2",
+    "typescript": "^2.0.3",
+    "webpack": "^2.1.0-beta.25",
+    "webpack-dev-server": "^2.1.0-beta.8",
+    "webpack-merge": "^0.14.1"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/J-F-Liu/CanvasGames.git"
   },
-  "author": "Junfeng Liu",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/J-F-Liu/CanvasGames/issues"
   },

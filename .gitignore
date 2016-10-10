@@ -8,11 +8,11 @@
 # Build results
 [Bb]in/
 [Oo]bj/
-*.js
 *.js.map
 
 # Build output directory
 out/
+built/
 release/
 
-!LAB.min.js
+node_modules
