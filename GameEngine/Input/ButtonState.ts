@@ -1,4 +1,4 @@
-﻿class ButtonState {
+﻿export class ButtonState {
     down: boolean = false;
     pressed: boolean = false;
 

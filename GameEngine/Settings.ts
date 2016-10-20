@@ -1,4 +1,4 @@
-﻿class GameSettings {
+﻿export class Settings {
 
     get storageKey(): string {
         throw "Need be implemented in subclass."
@@ -7,7 +7,7 @@
     update(settings: any) {
     }
 
-    static load<T extends GameSettings>(c: { new (): T; }) {
+    static load<T extends Settings>(c: { new (): T; }) {
         var settings = new c();
         var data = window.localStorage.getItem(settings.storageKey);
         if (data != null) {

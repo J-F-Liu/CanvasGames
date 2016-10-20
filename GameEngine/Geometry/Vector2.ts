@@ -1,4 +1,4 @@
-﻿class Vector2 {
+﻿export class Vector2 {
     constructor(
         public x: number,
         public y: number) {

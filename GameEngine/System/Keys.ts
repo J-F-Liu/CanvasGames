@@ -1,4 +1,4 @@
-﻿var Keys = {
+﻿export const Keys = {
     none: 0,
     back: 8,
     tab: 9,

@@ -1,4 +1,8 @@
-﻿class Circle implements Shape {
+﻿import {Rectangle} from './Rectangle';
+import {Vector2} from './Vector2';
+import {Shape} from './Shape';
+
+export class Circle implements Shape {
     constructor(
         public x: number,
         public y: number,

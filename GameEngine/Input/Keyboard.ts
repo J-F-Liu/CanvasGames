@@ -1,4 +1,6 @@
-﻿class Keyboard {
+﻿import {ButtonState} from './ButtonState';
+
+export class Keyboard {
     static keyStates: ButtonState[];
     static init() {
         Keyboard.keyStates = [];

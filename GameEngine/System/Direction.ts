@@ -1,9 +1,9 @@
-﻿enum Direction {
+﻿export enum Direction {
     left, right, up, down,
     east, south, west, north,
 }
 
-class Directions {
+export class Directions {
     static opposite(direction: Direction) {
         switch (direction) {
             case Direction.east:

@@ -1,4 +1,5 @@
-class TouchScreen {
+
+export class TouchScreen {
     static _touches = [];
     static _touchPresses = [];
 

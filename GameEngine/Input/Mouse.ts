@@ -1,4 +1,9 @@
-﻿class Mouse {
+﻿import {Game} from '../Game';
+import {Shape} from '../Geometry/Shape';
+import {Vector2} from '../Geometry/Vector2';
+import {ButtonState} from './ButtonState';
+
+export class Mouse {
     static position: Vector2 = Vector2.zero;
     static left: ButtonState = new ButtonState();
     static middle: ButtonState = new ButtonState();

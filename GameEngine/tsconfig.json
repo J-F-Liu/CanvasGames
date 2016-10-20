@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "target": "ES5",
-    "declaration": true,
+    "target": "ES6",
+    "declaration": false,
     "removeComments": true,
     "preserveConstEnums": false,
-    "out": "release/GameEngine.js",
+    "noImplicitUseStrict": true,
     "sourceMap": true
   },
   "files": [

@@ -1,10 +1,8 @@
-﻿interface Shape {
-    contains(point: Vector2): boolean;
-    hasIntersect(shape: Shape): boolean;
-    center: Vector2;
-}
+﻿import {Shape} from './Shape';
+import {Vector2} from './Vector2';
+import {Circle} from './Circle';
 
-class Rectangle implements Shape {
+export class Rectangle implements Shape {
     constructor(
         public x: number,
         public y: number,

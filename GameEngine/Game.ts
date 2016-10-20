@@ -1,5 +1,13 @@
-﻿class Game {
-    static scenes: SceneManager;
+﻿import {Canvas2D, Renderer} from './Canvas2D';
+import {Rectangle} from './Geometry/Rectangle';
+import {Vector2} from './Geometry/Vector2';
+import {Keyboard} from './Input/Keyboard';
+import {Mouse} from './Input/Mouse';
+import {Color} from './System/Color';
+import {World} from './World';
+
+export class Game {
+    static world: World;
     static viewport: Rectangle;
     static canvas: HTMLCanvasElement;
     static renderer: Renderer;
@@ -9,7 +17,7 @@
     static assetsLoadingCount: number = 0;
     static totalTime: number = 0;
     static prevTimestamp: number;
-    static createScenes: () => any;
+    static createWorld: () => World;
 
     static init(width: number, height: number) {
         Mouse.init();
@@ -17,7 +25,6 @@
         Game.viewport = new Rectangle(0, 0, width, height);
         Game.canvas = Game.createCanvas(width, height);
         Game.renderer = new Canvas2D(Game.canvas);
-        Game.scenes = new SceneManager();
     }
 
     static createCanvas(width: number, height: number): HTMLCanvasElement {
@@ -28,10 +35,10 @@
         return canvas;
     }
 
-    static loadImages(imageFolder: string, ...filenames: string[]) {
-        filenames.forEach(function (filename) {
-            var name = filename.substr(0, filename.lastIndexOf('.'));
-            Game.images[name] = Game.loadImage(imageFolder + filename);
+    static loadImages(imageFolder: string, gameData) {
+        let images = World.collectAssests(gameData);
+        images.forEach(function (filename) {
+            Game.images[filename] = Game.loadImage(imageFolder + filename);
         });
     }
 
@@ -73,7 +80,7 @@
             requestAnimationFrame(Game.assetLoadingLoop);
         } else {
             Game.renderer.clear();
-            Game.createScenes();
+            Game.world = Game.createWorld();
             requestAnimationFrame(Game.mainLoop);
         }
     }
@@ -87,9 +94,7 @@
         // drops frames of long spans when browser tab is inactive
         if (frameSpan <= 0.5) {
             Game.totalTime += frameSpan;
-
-            Game.scenes.currentScene.update(frameSpan);
-            Game.scenes.currentScene.draw(Game.renderer);
+            Game.world.update(frameSpan);
 
             Mouse.reset();
             Keyboard.reset();
@@ -97,8 +102,8 @@
         requestAnimationFrame(Game.mainLoop);
     }
 
-    static start(createScenes: () => any) {
-        Game.createScenes = createScenes;
+    static start(createWorld: () => World) {
+        Game.createWorld = createWorld;
         Game.assetLoadingLoop();
     }
 }
